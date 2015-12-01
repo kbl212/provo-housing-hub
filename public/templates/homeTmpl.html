@@ -1,42 +1,64 @@
-<div class="container">
+<div class="main-body" ng-controller="homeCtrl">
+  <div class="container">
     <form>
         <input class="search-bar" placeholder="Search all listings...">
+    </form>
+    <br/>
+    <form>
+        <button ng-class="listView" ng-click="listView='active-view'; galleryView='inactive-view'">List View</button>
+        <button ng-class="galleryView" ng-click="galleryView='active-view'; listView='inactive-view'">Gallery View</button>       <!-- *** EVERY TIME THIS BUTTON IS CLICKED, CALL $scope.resizePic() function, to resize all pics before displaying them! -->
     </form>
 </div>
 
 </br>
 </br>
-<div class="container">
+
+
+
+
+
+<!--   LIST VIEW   -->
+
+  <div class="container" ng-show="listView === 'active-view'">
     
     <table class="table table-hover">
         <thead>
-            Current Listings
+            <td>Date Posted</td>
+            <td>Current Listings</td>
+            <td>Beds</td>
+            <td>Price</td>
         </thead>
         <tbody>
-            <tr>
-                <td>test1</td>
-                <td>test2</td>
-                <td>test3</td>
+            <tr ng-repeat="listing in listings">
+                <td class="date-posted">{{listing.datePosted}}</td>
+                <td>{{listing.title}}</td>
+                <td>{{listing.beds}}</td>
+                <td>${{listing.price | number:0}}/mo</td>
             </tr>
-                        <tr>
-                <td>test1</td>
-                <td>test2</td>
-                <td>test3</td>
-            </tr>
-                        <tr>
-                <td>test1</td>
-                <td>test2</td>
-                <td>test3</td>
-            </tr>
-                        <tr>
-                <td>test1</td>
-                <td>test2</td>
-                <td>test3</td>
-            </tr>
-        
-        
         </tbody>
     
     </table>
 
+  </div>
+
+
+
+
+
+<!-- GALLERY VIEW -->
+
+  <div class="container" ng-show="galleryView === 'active-view'">
+
+    <div class="gallery-listing" ng-repeat="listing in listings">
+        <img class="gallery-pic" src={{listing.picture}}>
+        <span class="gallery-price">{{listing.price}}/mo</span>
+        <span class="gallery-date">{{listing.datePosted}}</span>
+        <p class="gallery-title">{{listing.title}}</p>
+
+
+
+
+
+
+  </div>
 </div>
