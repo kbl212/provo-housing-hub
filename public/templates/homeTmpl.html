@@ -1,7 +1,7 @@
 <div class="main-body" ng-controller="homeCtrl">
   <div class="container">
     <form>
-        <input class="search-bar" placeholder="Search all listings...">
+        <input class="search-bar" placeholder="Search all listings..." ng-model="searchListings" ng-init-"search-bar=''">
     </form>
     <br/>
     <form>
@@ -29,7 +29,7 @@
             <td>Price</td>
         </thead>
         <tbody>
-            <tr ng-repeat="listing in listings">
+            <tr ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'">
                 <td class="date-posted">{{listing.datePosted}}</td>
                 <td>{{listing.title}}</td>
                 <td>{{listing.beds}}</td>
@@ -49,9 +49,9 @@
 
   <div class="container" ng-show="galleryView === 'active-view'">
 
-    <div class="gallery-listing" ng-repeat="listing in listings">
+    <div class="gallery-listing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'">
         <img class="gallery-pic" src={{listing.picture}}>
-        <span class="gallery-price">{{listing.price}}/mo</span>
+        <span class="gallery-price">${{listing.price}}/mo</span>
         <span class="gallery-date">{{listing.datePosted}}</span>
         <p class="gallery-title">{{listing.title}}</p>
 
