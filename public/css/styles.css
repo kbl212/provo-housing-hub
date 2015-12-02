@@ -1,6 +1,9 @@
 html {
     height: 100%;
+    width: 100%;
 }
+
+
 
 .nav-top li {
     display:inline-block;
@@ -29,10 +32,9 @@ body {
     color: #fff;
     position: relative;
     font-family: 'Lato', sans-serif;
-    margin-top: 25px;
-    padding: 0;
-    padding-left: 0;
-    padding-right: 0;
+    margin: 0 0;
+    padding: 0 0;
+
 }
 
 #big-jumbo {
@@ -137,7 +139,7 @@ thead {
     right:0;
     background-color: aliceblue;
     color: red;
-    width: 15%;
+    width: 20%;
     height: 10%;
     text-align: center;
     font-weight: bold;
@@ -164,4 +166,43 @@ thead {
 .empty-user {
     width: 500px;
     height: 500px;
+}
+
+.avatar-img, table {
+    display:inline;
+}
+
+td {
+    width: 700px;
+}
+tbody {
+    background-color: #fff;
+}
+
+.avatar-img {
+    margin-right: 30px;
+    height: 400px;
+    width:30%;
+    min-width:300px;
+}
+
+.modal {
+display: block;
+}
+
+.thead-sort:hover {
+    cursor: pointer;
+}
+
+#video-background {
+    /*  making the video fullscreen  */
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+  margin: 0, 0;
 }

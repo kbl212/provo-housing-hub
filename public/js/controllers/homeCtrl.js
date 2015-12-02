@@ -6,10 +6,46 @@ app.controller('homeCtrl', function($scope) {
     
     $scope.listView = "active-view";
     $scope.galleryView = "inactive-view";
+    $scope.sortType = "-postNumber";
+    $scope.ordering = "-";
 
-    $scope.resizePics = function(picture) {
-        var newSize = scaleSize
-    };
+
+    
+   /* $scope.changeSortType = function(typeIn) {
+       var sortType = $scope.sortType;
+       var sortTypeText = sortType.substring(0, sortType.length);
+        console.log(sortTypeText);
+
+        if (typeIn === sortTypeText) {
+            if (sortType.charAt(0) === '-')
+                $scope.sortType = '+' + typeIn;
+            else
+                $scope.sortyType = '-' + typeIn;
+        }
+        
+        else {
+            $scope.sortType = '-' + typeIn.substring(0, typeIn.length);
+        }
+        
+    }
+    
+    */
+    
+    $scope.changeSortType = function(typeIn) {
+        console.log("this is $scope.ordering= " + $scope.ordering);
+        if ($scope.ordering === "-") {
+            console.log(1);
+            $scope.ordering = "+";
+        }
+        else {
+            console.log(2);
+            $scope.ordering = "-";
+        }
+        console.log("final = " + $scope.ordering + typeIn);
+        $scope.sortType = ($scope.ordering + typeIn);
+    }
+    
+    
     
     $scope.listings = [
         
@@ -35,7 +71,7 @@ app.controller('homeCtrl', function($scope) {
         },
         
         {
-            picture: "../../20151201_222522.jpg",
+            picture: "20151201_222522.jpg",
             price: 235,
             beds: 3,
             baths: 1.5,

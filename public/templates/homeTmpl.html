@@ -1,7 +1,7 @@
 <div class="main-body" ng-controller="homeCtrl">
   <div class="container">
     <form>
-        <input class="search-bar" placeholder="Search all listings..." ng-model="searchListings" ng-init-"search-bar=''">
+        <input class="search-bar" placeholder="Search all listings..." ng-model="searchListings" >
     </form>
     <br/>
     <form>
@@ -23,13 +23,13 @@
     
     <table class="table table-hover">
         <thead>
-            <td>Date Posted</td>
-            <td>Current Listings</td>
-            <td>Beds</td>
-            <td>Price</td>
+            <td class="thead-sort" ng-click="changeSortType('postNumber')">Date Posted</td>
+            <td class="thead-sort" ng-click="changeSortType('title')">Current Listings</td>
+            <td class="thead-sort" ng-click="changeSortType('beds')">Beds</td>
+            <td class="thead-sort" ng-click="changeSortType('price')">Price</td>
         </thead>
         <tbody>
-            <tr ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'">
+            <tr ng-repeat="listing in listings | filter: searchListings | orderBy: sortType">
                 <td class="date-posted">{{listing.datePosted}}</td>
                 <td>{{listing.title}}</td>
                 <td>{{listing.beds}}</td>
@@ -50,15 +50,16 @@
   <div class="container" ng-show="galleryView === 'active-view'">
 
     <div class="gallery-listing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'">
-        <img class="gallery-pic" src={{listing.picture}}>
+        <img class="gallery-pic" src="{{listing.picture}}">
         <span class="gallery-price">${{listing.price}}/mo</span>
         <span class="gallery-date">{{listing.datePosted}}</span>
         <p class="gallery-title">{{listing.title}}</p>
 
-
+    
 
 
 
 
   </div>
+</div>
 </div>
