@@ -8,28 +8,7 @@ app.controller('homeCtrl', function($scope) {
     $scope.galleryView = "inactive-view";
     $scope.sortType = "-postNumber";
     $scope.ordering = "-";
-
-
-    
-   /* $scope.changeSortType = function(typeIn) {
-       var sortType = $scope.sortType;
-       var sortTypeText = sortType.substring(0, sortType.length);
-        console.log(sortTypeText);
-
-        if (typeIn === sortTypeText) {
-            if (sortType.charAt(0) === '-')
-                $scope.sortType = '+' + typeIn;
-            else
-                $scope.sortyType = '-' + typeIn;
-        }
-        
-        else {
-            $scope.sortType = '-' + typeIn.substring(0, typeIn.length);
-        }
-        
-    }
-    
-    */
+    $scope.currListing = "There's nothing here...";
     
     $scope.changeSortType = function(typeIn) {
         console.log("this is $scope.ordering= " + $scope.ordering);
@@ -45,6 +24,20 @@ app.controller('homeCtrl', function($scope) {
         $scope.sortType = ($scope.ordering + typeIn);
     }
     
+    $scope.getCurrListing = function(postNumber) {
+            console.log($scope.currListing);
+
+        alert("currentPostNumber: " + postNumber);
+        for (var i = 0; i < $scope.listings.length; i++) {
+            if ($scope.listings[i].postNumber === postNumber) {
+                $scope.currListing = $scope.listings[i];
+                $scope.testListing = $scope.currListing;
+            console.log($scope.currListing);
+
+            }
+        }
+        alert("not found...");
+    }
     
     
     $scope.listings = [

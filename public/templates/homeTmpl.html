@@ -29,12 +29,12 @@
             <td class="thead-sort" ng-click="changeSortType('price')">Price ($)/mo</td>
         </thead>
         <tbody>
-            <tr ng-repeat="listing in listings | filter: searchListings | orderBy: sortType">
+            <a ui-sref="currentListing"><tr ng-repeat="listing in listings | filter: searchListings | orderBy: sortType" ng-click="currListing=getCurrListing(listing.postNumber)">
                 <td class="date-posted">{{listing.datePosted}}</td>
                 <td>{{listing.title}}</td>
                 <td>{{listing.beds}}</td>
                 <td>${{listing.price | number:0}}</td>
-            </tr>
+            </tr></a>
         </tbody>
     
     </table>
@@ -49,17 +49,11 @@
 
   <div class="container" ng-show="galleryView === 'active-view'">
 
-    <div class="gallery-listing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'">
+    <a ui-sref="currentListing"><div class="gallery-listing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="currListing=getCurrListing(listing.postNumber)">
         <img class="gallery-pic" src="{{listing.picture}}">
         <span class="gallery-price">${{listing.price}}/mo</span>
         <span class="gallery-date">{{listing.datePosted}}</span>
         <p class="gallery-title">{{listing.title}}</p>
-
-    
-
-
-
-
-  </div>
+  </div></a>
 </div>
 </div>

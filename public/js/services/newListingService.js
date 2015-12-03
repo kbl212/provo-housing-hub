@@ -3,7 +3,7 @@ var app = angular.module('provo-housing-hub');
 
 app.service('newListingService', function($http) {
     
-    this.NewListing = function(titleIn, addressIn, priceIn, bedsIn, bathsIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn) {
+    this.NewListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn) {
         
         if (petsIn === undefined)
             petsIn = false;
@@ -29,6 +29,7 @@ app.service('newListingService', function($http) {
         this.price = priceIn;
         this.beds = bedsIn;
         this.baths = bathsIn;
+        this.sqFootage = sqFootageIn;
         this.image = imageIn;
         this.pets = petsIn;
         this.canUseEmail = emailIn;

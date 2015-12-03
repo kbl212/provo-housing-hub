@@ -22,7 +22,11 @@
 <p class="help-block">Please enter all required info for your listing, in order to provide other viewers with the best information possible:</p>
   <div class="form-group">
     <label for="postTitle">Post Title</label>
-    <input type="text" class="form-control" id="PostTitle" placeholder="Post title..." ng-model="titleIn">
+    <input type="text" class="form-control" id="postTitle" placeholder="Post title..." ng-model="titleIn">
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea id="description" ng-model="descIn"></textarea>
   </div>
   <div class="form-group">
     <label for="newAddress">Street Address</label>
@@ -39,6 +43,10 @@
   <div class="form-group">
     <label for="totalBaths">Total Bathrooms</label>
     <input type="text" class="form-control" id="totalBaths" placeholder="Total # of bathrooms..." ng-model="bathsIn">
+  </div>
+  <div class="form-group">
+    <label for="sqFootage">Square footage</label>
+    <input type="text" class="form-control" id="sqFootage" placeholder="Total square footage (number)..." ng-model="sqFootageIn">
   </div>
   <div class="form-group">
     <label for="exampleInputFile">Image for listing</label>

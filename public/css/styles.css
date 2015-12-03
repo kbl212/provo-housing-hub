@@ -257,3 +257,9 @@ tbody {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+#description {
+    color: #000;
+    min-width: 650px;
+    min-height: 100px;
+}

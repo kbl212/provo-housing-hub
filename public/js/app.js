@@ -41,9 +41,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     
     .state('currentListing', {
-        url: '/currentList:postNumber',
+        url: '/currentList',     //needs param?  (:postNumber)
         templateUrl: 'templates/currentListingTmpl.html',
-        controller: 'currentListingCtrl'
+        controller: 'homeCtrl'
         
     })
     
