@@ -2,7 +2,7 @@ var app = angular.module('provo-housing-hub');
 
 
 
-app.controller('homeCtrl', function($scope) {
+app.controller('homeCtrl', function($scope, homeService) {
     
     $scope.listView = "active-view";
     $scope.galleryView = "inactive-view";
@@ -33,13 +33,27 @@ app.controller('homeCtrl', function($scope) {
                 $scope.currListing = $scope.listings[i];
                 $scope.testListing = $scope.currListing;
             console.log($scope.currListing);
-
             }
         }
         alert("not found...");
     }
     
     
+    
+    $scope.listings = [];
+    
+    $scope.getListings = function() {
+       homeService.getListings().then(function(response) {
+           $scope.listings;
+       });
+    };
+    
+    $scope.getListings();
+    
+    
+    
+    
+    /*
     $scope.listings = [
         
         {
@@ -103,6 +117,6 @@ app.controller('homeCtrl', function($scope) {
             datePosted: "Nov 26",
             postNumber: 4
         }
-    ];
+    ]; */
     
 });
