@@ -26,14 +26,14 @@
             <td class="thead-sort" ng-click="changeSortType('postNumber')">Date Posted</td>
             <td class="thead-sort" ng-click="changeSortType('title')">Current Listings</td>
             <td class="thead-sort" ng-click="changeSortType('beds')">Beds</td>
-            <td class="thead-sort" ng-click="changeSortType('price')">Price</td>
+            <td class="thead-sort" ng-click="changeSortType('price')">Price ($)/mo</td>
         </thead>
         <tbody>
             <tr ng-repeat="listing in listings | filter: searchListings | orderBy: sortType">
                 <td class="date-posted">{{listing.datePosted}}</td>
                 <td>{{listing.title}}</td>
                 <td>{{listing.beds}}</td>
-                <td>${{listing.price | number:0}}/mo</td>
+                <td>${{listing.price | number:0}}</td>
             </tr>
         </tbody>
     

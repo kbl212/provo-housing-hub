@@ -1,8 +1,6 @@
 var app = angular.module('provo-housing-hub', ['ui.router']);
 
 
-//route config here
-
 
 app.config(function($stateProvider, $urlRouterProvider) {
     
@@ -22,10 +20,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
         
     })
         
-    .state('listing', {
-        url: '/listing',
-        templateUrl: 'templates/listingTmpl.html',
-        controller: 'listingCtrl'
+    .state('newlisting', {
+        url: '/newlisting',
+        templateUrl: 'templates/newListingTmpl.html',
+        controller: 'newListingCtrl'
         
     })
         
@@ -34,6 +32,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'templates/accountTmpl.html',
         controller: 'accountCtrl'
         
+    })
+    
+    .state('signin', {
+        url: '/signin',
+        templateUrl: 'templates/signInTmpl.html',
+        controller: 'signInCtrl'
     })
     
     $urlRouterProvider
