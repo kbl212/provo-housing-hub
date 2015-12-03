@@ -40,13 +40,14 @@ app.controller('homeCtrl', function($scope, homeService) {
     
     
     
-    $scope.listings = [];
-    
     $scope.getListings = function() {
        homeService.getListings().then(function(response) {
-           $scope.listings;
+           $scope.listings = response;
        });
     };
+    
+    
+    
     
     $scope.getListings();
     
