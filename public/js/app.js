@@ -40,6 +40,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'signInCtrl'
     })
     
+    .state('currentListing', {
+        url: '/currentList:postNumber',
+        templateUrl: 'templates/currentListingTmpl.html',
+        controller: 'currentListingCtrl'
+        
+    })
+    
     $urlRouterProvider
         .otherwise('/');
     
