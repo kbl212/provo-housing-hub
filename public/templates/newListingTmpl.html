@@ -1,4 +1,4 @@
-<div class="container" ng-controller="newListingCtrl">
+<div class="container" ng-controller="homeCtrl">
   <!--  <form>
         <input label="Title" placeholder="Title...">
         </br>
@@ -21,27 +21,27 @@
 <form class="new-listing-info">
 <p class="help-block">Please enter all required info for your listing, in order to provide other viewers with the best information possible:</p>
   <div class="form-group">
-    <label for="postTitle">Post Title</label>
+    <label for="postTitle">*Post Title</label>
     <input type="text" class="form-control" id="postTitle" placeholder="Post title..." ng-model="titleIn">
   </div>
   <div class="form-group">
-    <label for="description">Description:</label>
+    <label for="description">*Description:</label>
     <textarea id="description" ng-model="descIn"></textarea>
   </div>
   <div class="form-group">
-    <label for="newAddress">Street Address</label>
+    <label for="newAddress">*Street Address</label>
     <input type="text" class="form-control" id="newAddress" placeholder="Street Address, Apartment #...e.g. 555 W 555 S #5" ng-model="addressIn">
   </div>
   <div class="form-group">
-    <label for="price">Price ($USD)</label>
+    <label for="price">*Price ($USD)</label>
     <input type="text" class="form-control" id="price" placeholder="Price ($USD)..." ng-model="priceIn">
   </div>
   <div class="form-group">
-    <label for="totalBeds">Total Bedrooms</label>
+    <label for="totalBeds">*Total Bedrooms</label>
     <input type="text" class="form-control" id="totalBeds" placeholder="Total # of bedrooms..." ng-model="bedsIn">
   </div>
   <div class="form-group">
-    <label for="totalBaths">Total Bathrooms</label>
+    <label for="totalBaths">*Total Bathrooms</label>
     <input type="text" class="form-control" id="totalBaths" placeholder="Total # of bathrooms..." ng-model="bathsIn">
   </div>
   <div class="form-group">
@@ -103,7 +103,7 @@
   </div>
     
 </div>
-  <button type="submit" class="btn btn-default" ng-click="newListing(titleIn, addressIn, priceIn, bedsIn, bathsIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn)">Submit</button>
+  <a ui-sref="home"><button type="submit" class="btn btn-default" ng-click="newListing(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn)">Submit</button></a>
 </form>
 
 

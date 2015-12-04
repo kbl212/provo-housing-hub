@@ -19,7 +19,9 @@ module.exports = {
     
     
     
+    
     postNewListing: function(req,res,next) {
+        req.body.price = Number(req.body.price);
         listings.push(req.body);
         res.status(200).json(listings);
     },
