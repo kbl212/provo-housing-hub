@@ -6,7 +6,7 @@ app.controller('homeCtrl', function($scope, homeService) {
     $scope.galleryView = "inactive-view";
     $scope.sortType = "-postNumber";
     $scope.ordering = "-";
-    $scope.currListing = "There's nothing here...";
+   // $scope.currListing = "There's nothing here...";
     
     $scope.changeSortType = function(typeIn) {
         console.log("this is $scope.ordering= " + $scope.ordering);
@@ -22,8 +22,20 @@ app.controller('homeCtrl', function($scope, homeService) {
         $scope.sortType = ($scope.ordering + typeIn);
     }
     
-    $scope.getCurrListing = function(postNumber) {
-            console.log($scope.currListing);
+    $scope.getCurrentListing = function() {
+        $scope.currListing = homeService.getCurrListing();
+    }
+    
+    $scope.getCurrentListing();
+    
+   /* $scope.getCurrListing = function(postNumber) {
+        
+        return homeService.getOneListing(postNumber).then(function(response) {
+            $scope.currListing = response;
+        });
+        
+        
+        console.log($scope.currListing);
 
         alert("currentPostNumber: " + postNumber);
         for (var i = 0; i < $scope.listings.length; i++) {
@@ -33,12 +45,21 @@ app.controller('homeCtrl', function($scope, homeService) {
             }
         }
         alert("not found...");
+    }*/
+    
+    $scope.getOneListing = function(postNumberIn) {
+        homeService.getListings(postNumberIn).then(function(response) {
+          //  $scope.currListing = response;
+            $scope.getCurrentListing();
+            console.log("aaaaaaand $scope.currListing = ", $scope.currListing);
+
+
+        });
     }
-    
-    
     
     $scope.getListings = function() {
        homeService.getListings().then(function(response) {
+           $scope.getCurrentListing();
            $scope.listings = response;
            
        });

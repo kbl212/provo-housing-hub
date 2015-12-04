@@ -1,3 +1,5 @@
-<div class="container" ng-controller="homeCtrl">
-    
+<div class="container one-listing" ng-controller="homeCtrl" ng-init="getCurrentListing()">
+    <div class="gallery-listing"> <img class="gallery-pic" src="{{currListing.picture}}"> </div>
+    {{currListing.title}}
+    {{currListing.price}}
 </div>

@@ -4,6 +4,7 @@ module.exports = {
     
     getListings: function(req,res,next) {
         var newArr = [];
+        console.log("here is req.query", req.query);
         if (req.query.postNumber === undefined)
             newArr = listings;
         else {
@@ -13,11 +14,11 @@ module.exports = {
                     if (listings[i].postNumber == req.query.postNumber)
                         newArr.push(listings[i]);
                 }
+                    console.log("this is newArr: ", newArr);
+
         }
         res.status(200).json(newArr);
     },
-    
-    
     
     
     postNewListing: function(req,res,next) {

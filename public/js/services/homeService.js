@@ -2,16 +2,37 @@ var app = angular.module('provo-housing-hub');
 
 
 app.service('homeService', function($http) {
-    
-    this.getListings = function() {
-        
-        return $http.get('/api/listings').then(function(response) {
-            console.log(response);
-            return response.data;
+    var currListing = {};
+    this.getListings = function(postNumberIn) {
+        if (postNumberIn === undefined) {
+            return $http.get('/api/listings').then(function(response) {
+                console.log(response);
+                return response.data;
             
-        });
+            });
+        }
+        else {
+            console.log("function started...", postNumberIn);
+            return $http.get('/api/listings?postNumber=' + postNumberIn).then(function(response) {
+                console.log("this is oneListing response: ", response.data[0]);
+                currListing = response.data[0];
+                return response.data[0];
+            });
+        }
         
     }
+    
+    this.getCurrListing = function() {
+        return currListing;
+    }
+    
+ /*   this.getOneListing = function(postNumber) {
+        return $http.get('/api/listings?postNumber=' + postNumber).then(function(response) {
+            console.log(response.data);
+            return response.data;
+        });
+    }
+*/
     
     this.getCurrDate = function() {
         var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

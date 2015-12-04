@@ -263,3 +263,8 @@ tbody {
     min-width: 650px;
     min-height: 100px;
 }
+
+.one-listing {
+    background-color: #fff;
+    color: #000;
+}
