@@ -34,12 +34,6 @@ app.post('/api/listings', listingCtrl.postNewListing);
 app.post('/api/account', userCtrl.createNewAccount);
 app.get('/api/account', userCtrl.getUserAccount);
 
-
-
-
-
-
-
 ///////////////
 //CONNECTIONS//
 ///////////////

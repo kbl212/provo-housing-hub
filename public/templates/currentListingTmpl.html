@@ -1,7 +1,7 @@
-<div class="container one-listing" ng-controller="homeCtrl" ng-init="getCurrentListing()">
+<div class="custom-container one-listing" ng-controller="homeCtrl" ng-init="getCurrentListing()">
     <div class="listing-display">
     </br>
-        <h3>${{currListing.price}} / {{currListing.beds}}br  -- {{currListing.title}}</h3>
+        <h3>${{currListing.price}} / {{currListing.beds}}br  -- {{currListing.title}} <span class="address-span">({{currListing.address}})</span></h3>
     </br>
         <div> <img class="one-listing-pic" src="{{currListing.picture}}"/> </div>
     </br>
@@ -12,7 +12,7 @@
 </br>
     <table class="quick-facts">
         <thead class="quick-facts-head">
-            Quick Facts
+            <span class="">Quick Facts</span>
         </thead>
         <tbody>
           <tr>
@@ -29,7 +29,12 @@
             <td class="td-first">Baths:</td>
             <td class="td-second">{{currListing.baths}}</td>
           </tr>
-
+            
+          <tr>
+            <td class="td-first">Washer/Dryer in unit:</td>
+            <td class="td-second">{{currListing.wd}}</td>
+          </tr>
+            
           <tr>
             <td class="td-first">Smoking Allowed:</td>
             <td class="td-second">{{currListing.noSmoke}}</td>
@@ -39,6 +44,17 @@
             <td class="td-first">Pets Allowed:</td>
             <td class="td-second">{{currListing.pets}}</td>
           </tr>
+
+          <tr>
+            <td class="td-first">Pets Allowed:</td>
+            <td class="td-second">{{currListing.pets}}</td>
+          </tr>
+            
+          <tr>
+            <td class="td-first">BYU approved:</td>
+            <td class="td-second">{{currListing.byuApproved}}</td>
+          </tr>
+
 
         </tbody>
     </table>

@@ -1,22 +1,6 @@
 <div class="container" ng-controller="homeCtrl">
-  <!--  <form>
-        <input label="Title" placeholder="Title...">
-        </br>
-        <div class="image-display">
-    
-        </div>
-        <button class="upload-image-btn">Upload image</button>
-        Address:
-        <input label="Address1" placeholder="Street Address, Apt #...">
-        <textarea class="new-listing-desc"></textarea>
-        <input label="Price" placeholder="Price/mo ($USD)...">
-        <input label="Num-beds" placeholder="Number of bedrooms...">
-        <input label="Num-baths" placeholder="Number of bathrooms...">
-        <input label="sq-ft" placeholder="Sq. footage...">
 
-    </form>
--->
-<br/>
+</br>
 
 <form class="new-listing-info">
 <p class="help-block">Please enter all required info for your listing, in order to provide other viewers with the best information possible:</p>
@@ -60,52 +44,56 @@
     </label>
   </div>
     
-      <div class="checkbox">
-    <label>
-      <input type="checkbox" ng-model="emailIn"> Check here for your contact EMAIL to be displayed on the listing
-    </label>
-  </div>
-    
-          <div class="checkbox">
-    <label>
-      <input type="checkbox" ng-model="phoneIn"> Check here for your contact PHONE NUMBER to be displayed on the listing
-    </label>
-  </div>
-    
-          <div class="checkbox">
+  <div class="checkbox">
     <label>
       <input type="checkbox" ng-model="wdIn"> Washer/Dryer
     </label>
   </div>
     
-          <div class="checkbox">
+  <div class="checkbox">
     <label>
       <input type="checkbox" ng-model="noSmokeIn"> Smoking allowed
     </label>
   </div>
     
-          <div class="checkbox">
+  <div class="checkbox">
     <label>
       <input type="checkbox" ng-model="byuIn"> BYU approved
     </label>
   </div>
     
-      <div class="checkbox">
+  <div class="checkbox">
     <label>
       <input type="checkbox" ng-model="parkingIn"> Parking available?
     </label>
   </div>
     
-          <div class="checkbox">
+  <div class="checkbox">
     <label>
       <input type="checkbox" ng-model="furnishedIn"> Furnished
     </label>
   </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="emailIn"> Check here for your contact EMAIL to be displayed on the listing
+    </label>
+  </div>
     
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="phoneIn"> Check here for your contact PHONE NUMBER to be displayed on the listing
+    </label>
+  </div>
 </div>
+
+</br>
+</br>
+
   <a ui-sref="home"><button type="submit" class="btn btn-default" ng-click="newListing(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn)">Submit</button></a>
 </form>
 
-
+</br>
+</br>
+</br>
 
 </div>

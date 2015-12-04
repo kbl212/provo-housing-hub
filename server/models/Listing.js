@@ -126,7 +126,6 @@ module.exports = [
             byuApproved: true,
             parking: true,
             furnished: true
-    
         }
 
 ];

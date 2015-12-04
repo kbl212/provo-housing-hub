@@ -279,10 +279,9 @@ tbody {
 
 .listing-display {
     position:relative;
-    height: 60%;
-    width: 60%;
+    height: 100%;
+    width: 100%;
     display:inline-block;
-    margin-left: 2%;
     margin-bottom: 20px;
 }
 
@@ -310,4 +309,16 @@ h3 {
 .td-second {
     background-color: #191919;
     color: #fff;
+}
+
+.custom-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 750px;
+}
+
+.address-span {
+    font-size: 14px;
 }
