@@ -7,7 +7,18 @@ module.exports = [
             baths: 1.5,
             title: "New apartment on 5th! get it now!",
             datePosted: "Nov 22",
-            postNumber: 3
+            postNumber: 3,
+            description: "This is just a sample description. Normally, people could write whatever they want here, in order to advertise the housing they are offering. For example, information on security deposits, when the apartment would be available for rent, etc.",
+            address: "457 W 500 N",
+            sqFootage: "2000",
+            pets: true,
+            canUseEmail: true,
+            canUsePhone: false,
+            wd: true,
+            noSmoke: true,
+            byuApproved: true,
+            parking: true,
+            furnished: true
         },
         
         {
@@ -17,7 +28,18 @@ module.exports = [
             baths: 1,
             title: "just need to get rid of my contract...halppp",
             datePosted: "Nov 19",
-            postNumber: 1
+            postNumber: 1,
+            description: "This is just a sample description. Normally, people could write whatever they want here, in order to advertise the housing they are offering. For example, information on security deposits, when the apartment would be available for rent, etc.",
+            address: "457 W 500 N",
+            sqFootage: "2000",
+            pets: true,
+            canUseEmail: true,
+            canUsePhone: false,
+            wd: true,
+            noSmoke: true,
+            byuApproved: true,
+            parking: true,
+            furnished: true
 
         },
         
@@ -28,7 +50,18 @@ module.exports = [
             baths: 1.5,
             title: "close to campus, great roommates",
             datePosted: "Dec 1",
-            postNumber: 6
+            postNumber: 6,
+            description: "This is just a sample description. Normally, people could write whatever they want here, in order to advertise the housing they are offering. For example, information on security deposits, when the apartment would be available for rent, etc.",
+            address: "457 W 500 N",
+            sqFootage: "2000",
+            pets: true,
+            canUseEmail: true,
+            canUsePhone: false,
+            wd: true,
+            noSmoke: true,
+            byuApproved: true,
+            parking: true,
+            furnished: true
         },
         
         {
@@ -38,7 +71,18 @@ module.exports = [
             baths: 1.5,
             title: "Open single room at The Village!",
             datePosted: "Nov 30",
-            postNumber: 5
+            postNumber: 5,
+            description: "This is just a sample description. Normally, people could write whatever they want here, in order to advertise the housing they are offering. For example, information on security deposits, when the apartment would be available for rent, etc.",
+            address: "457 W 500 N",
+            sqFootage: "2000",
+            pets: true,
+            canUseEmail: true,
+            canUsePhone: false,
+            wd: true,
+            noSmoke: true,
+            byuApproved: true,
+            parking: true,
+            furnished: true
         },
         
         {
@@ -48,7 +92,18 @@ module.exports = [
             baths: 1,
             title: "you won't find a better deal on an apartment!",
             datePosted: "Nov 19",
-            postNumber: 2
+            postNumber: 2,
+            description: "This is just a sample description. Normally, people could write whatever they want here, in order to advertise the housing they are offering. For example, information on security deposits, when the apartment would be available for rent, etc.",
+            address: "457 W 500 N",
+            sqFootage: "2000",
+            pets: true,
+            canUseEmail: true,
+            canUsePhone: false,
+            wd: true,
+            noSmoke: true,
+            byuApproved: true,
+            parking: true,
+            furnished: true
 
         },
         
@@ -59,7 +114,18 @@ module.exports = [
             baths: 1.5,
             title: "dirt cheap apartment, gonna go fast!",
             datePosted: "Nov 26",
-            postNumber: 4
+            postNumber: 4,
+            description: "This is just a sample description. Normally, people could write whatever they want here, in order to advertise the housing they are offering. For example, information on security deposits, when the apartment would be available for rent, etc.",
+            address: "457 W 500 N",
+            sqFootage: "2000",
+            pets: true,
+            canUseEmail: true,
+            canUsePhone: false,
+            wd: true,
+            noSmoke: true,
+            byuApproved: true,
+            parking: true,
+            furnished: true
     
         }
 

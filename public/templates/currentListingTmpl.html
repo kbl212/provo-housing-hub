@@ -1,5 +1,47 @@
 <div class="container one-listing" ng-controller="homeCtrl" ng-init="getCurrentListing()">
-    <div class="gallery-listing"> <img class="gallery-pic" src="{{currListing.picture}}"> </div>
-    {{currListing.title}}
-    {{currListing.price}}
+    <div class="listing-display">
+    </br>
+        <h3>${{currListing.price}} / {{currListing.beds}}br  -- {{currListing.title}}</h3>
+    </br>
+        <div> <img class="one-listing-pic" src="{{currListing.picture}}"/> </div>
+    </br>
+    <p class="description-par">
+        {{currListing.description}}
+    </p>
+
+</br>
+    <table class="quick-facts">
+        <thead class="quick-facts-head">
+            Quick Facts
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-first">Monthly:</td>
+            <td class="td-second">${{currListing.price}}</td>
+          </tr>
+
+          <tr>
+            <td class="td-first">Beds:</td>
+            <td class="td-second">{{currListing.beds}}</td>
+          </tr>
+
+          <tr>
+            <td class="td-first">Baths:</td>
+            <td class="td-second">{{currListing.baths}}</td>
+          </tr>
+
+          <tr>
+            <td class="td-first">Smoking Allowed:</td>
+            <td class="td-second">{{currListing.noSmoke}}</td>
+          </tr>
+
+          <tr>
+            <td class="td-first">Pets Allowed:</td>
+            <td class="td-second">{{currListing.pets}}</td>
+          </tr>
+
+        </tbody>
+    </table>
+    </div>
+
 </div>

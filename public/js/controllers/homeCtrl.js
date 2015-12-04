@@ -9,16 +9,12 @@ app.controller('homeCtrl', function($scope, homeService) {
    // $scope.currListing = "There's nothing here...";
     
     $scope.changeSortType = function(typeIn) {
-        console.log("this is $scope.ordering= " + $scope.ordering);
         if ($scope.ordering === "-") {
-            console.log(1);
             $scope.ordering = "+";
         }
         else {
-            console.log(2);
             $scope.ordering = "-";
         }
-        console.log("final = " + $scope.ordering + typeIn);
         $scope.sortType = ($scope.ordering + typeIn);
     }
     
@@ -51,7 +47,6 @@ app.controller('homeCtrl', function($scope, homeService) {
         homeService.getListings(postNumberIn).then(function(response) {
           //  $scope.currListing = response;
             $scope.getCurrentListing();
-            console.log("aaaaaaand $scope.currListing = ", $scope.currListing);
 
 
         });

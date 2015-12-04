@@ -267,4 +267,47 @@ tbody {
 .one-listing {
     background-color: #fff;
     color: #000;
+    padding-left: 20px;
+    padding-right: 40px;
+    text-align: center;
+}
+
+.one-listing-pic {
+    height: 400px;
+    width:100%;
+}
+
+.listing-display {
+    position:relative;
+    height: 60%;
+    width: 60%;
+    display:inline-block;
+    margin-left: 2%;
+    margin-bottom: 20px;
+}
+
+.description-par {
+    font-size: 18px;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+
+.quick-facts {
+}
+
+.quick-facts-head {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.td-first {
+    background-color: teal;
+}
+
+.td-second {
+    background-color: #191919;
+    color: #fff;
 }
