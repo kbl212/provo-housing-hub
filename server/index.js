@@ -37,8 +37,21 @@ app.get('/api/account', userCtrl.getUserAccount);
 ///////////////
 //CONNECTIONS//
 ///////////////
+
+
+//----------------server on port 3000
 var port = 3000;
 app.listen(port, function() {
-    console.log(__dirname + '/public');
     console.log('connected to port ', port);
+});
+
+
+//----------------mongoDB on port 27017
+var mongoUri = "mongodb://localhost:27017/provo-housing-hub";
+mongoose.connect(mongoUri, function(err) {
+    if (err) throw err;
+});
+
+mongoose.connection.once('open', function() {
+    console.log('connected to mongoDb at: ', mongoUri);
 });

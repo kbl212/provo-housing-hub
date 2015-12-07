@@ -1,7 +1,32 @@
-var listings = require('../models/Listing');
+var Listing = require('../models/Listing');
 
 module.exports = {
     
+    
+    getListings: function(req,res,next) {
+        
+        Listing.find().exec(function(err, result) {
+            console.log(result);
+            
+            if (err) return res.status(500).send(err);
+            else res.send(result);
+        });
+    },
+    
+    
+    postNewListing: function(req,res,next) {
+        
+        var newListing = new Listing(req.body);
+        newListing.save(function(err, result) {
+            if (err) return res.status(500).send(err);
+            else res.send(result);
+        });
+    
+    
+    }
+};
+    
+    /*
     getListings: function(req,res,next) {
         var newArr = [];
         console.log("here is req.query", req.query);
@@ -25,5 +50,4 @@ module.exports = {
         req.body.price = Number(req.body.price);
         listings.push(req.body);
         res.status(200).json(listings);
-    },
-}
+    },*/

@@ -1,3 +1,103 @@
+var mongoose = require('mongoose');
+//var User = require('User');
+var Schema = mongoose.Schema;
+
+
+
+// ***default datePosted is set to Date.now...
+
+var listingSchema = new Schema({
+    
+    picture: {type: String},
+    price: {type: Number, required: true},
+    beds: {type: Number, required: true},
+    baths: {type: Number, required: true},
+    title: {type: String, required: true},
+    datePosted: {type: Date, default: Date.now, required: true},
+    description: {type: String, required: true},
+    address: {type: String, required: true},
+    sqFootage: {type: Number},
+    pets: {type: Boolean, required: true},
+    canUseEmail: {type: Boolean, required: true},
+    canUsePhone: {type: Boolean, required: true},
+    wd: {type: Boolean, required: true},
+    smokingAllowed: {type: Boolean, required: true},
+    byuApproved: {type: Boolean, required: true},
+    parking: {type: Boolean, required: true},
+    furnished: {type: Boolean, required: true},
+   // postNumber: {type: Number, required: true},
+   // postedBy: {ref: 'User', required: true}
+});
+
+module.exports = mongoose.model('Listing', listingSchema);
+
+
+
+//-----------------------POST EXAMPLE
+/*
+{
+    "picture": "http://img2.wikia.nocookie.net/__cb20130622063711/clashofclans/images/4/42/Barbarian_lvl1.jpg",
+    "price": 333,
+    "beds": 4,
+    "baths": 2,
+    "title": "Coolest. Unreal. Housing. Ever.",
+    "description": "haha yeeee brah totally rad",
+    "address": "333w 333e",
+    "sqFootage": 2929,
+    "pets": true,
+    "canUseEmail": true,
+    "canUsePhone": true,
+    "wd": false,
+    "smokingAllowed": false,
+    "byuApproved": true,
+    "parking": true,
+    "furnished": true
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 module.exports = [
             
         {
@@ -52,13 +152,13 @@ module.exports = [
             datePosted: "Dec 1",
             postNumber: 6,
             description: "This is just a sample description. Normally, people could write whatever they want here, in order to advertise the housing they are offering. For example, information on security deposits, when the apartment would be available for rent, etc.",
-            address: "457 W 500 N",
+            address: "340 E 600 N",
             sqFootage: "2000",
             pets: true,
             canUseEmail: true,
             canUsePhone: false,
-            wd: true,
-            noSmoke: true,
+            wd: false,
+            noSmoke: false,
             byuApproved: true,
             parking: true,
             furnished: true
@@ -127,8 +227,29 @@ module.exports = [
             parking: true,
             furnished: true
         }
-
 ];
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
