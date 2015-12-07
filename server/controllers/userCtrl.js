@@ -4,13 +4,19 @@ module.exports = {
     
     getUserAccount: function(req,res,next) {
         
-        
-        User.find().exec(function(err, result) {
-            console.log(result);
+        if (req.query.displayName) {
+            User.find({ displayName: req.query.displayName }).exec(function(err,result) {
+                if (err) res.status(500).send(err);
+                else res.send(result);
+            });
+        }
+        else {
+            User.find().exec(function(err, result) {
             
-            if (err) return res.status(500).send(err);
-            else res.send(result);
-        });
+                if (err) return res.status(500).send(err);
+                else res.send(result);
+            });
+        }
     },
     
     createNewAccount: function(req,res,next) {

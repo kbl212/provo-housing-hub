@@ -6,7 +6,6 @@ app.controller('homeCtrl', function($scope, homeService) {
     $scope.galleryView = "inactive-view";
     $scope.sortType = "-postNumber";
     $scope.ordering = "-";
-   // $scope.currListing = "There's nothing here...";
     
     $scope.changeSortType = function(typeIn) {
         if ($scope.ordering === "-") {
@@ -22,26 +21,7 @@ app.controller('homeCtrl', function($scope, homeService) {
         $scope.currListing = homeService.getCurrListing();
     }
     
-    $scope.getCurrentListing();
-    
-   /* $scope.getCurrListing = function(postNumber) {
-        
-        return homeService.getOneListing(postNumber).then(function(response) {
-            $scope.currListing = response;
-        });
-        
-        
-        console.log($scope.currListing);
-
-        alert("currentPostNumber: " + postNumber);
-        for (var i = 0; i < $scope.listings.length; i++) {
-            if ($scope.listings[i].postNumber === postNumber) {
-                $scope.currListing = $scope.listings[i];
-            console.log($scope.currListing);
-            }
-        }
-        alert("not found...");
-    }*/
+    $scope.getCurrentListing();       //*****RUNS at page load
     
     $scope.getOneListing = function(postNumberIn) {
         homeService.getListings(postNumberIn).then(function(response) {
@@ -56,12 +36,15 @@ app.controller('homeCtrl', function($scope, homeService) {
        homeService.getListings().then(function(response) {
            $scope.getCurrentListing();
            $scope.listings = response;
+           for (var i = 0; i < $scope.listings.length; i++) {
+               $scope.listings[i].datePosted = (homeService.getCurrDate($scope.listings[i].datePosted));
+           }
            
        });
     };
     
     
-    $scope.getListings();
+    $scope.getListings();  //*****RUNS at page load
     
     $scope.getNewPostNum = function() {
         var highestSoFar = 0;

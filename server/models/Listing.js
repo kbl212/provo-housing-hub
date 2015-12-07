@@ -25,7 +25,7 @@ var listingSchema = new Schema({
     byuApproved: {type: Boolean, required: true},
     parking: {type: Boolean, required: true},
     furnished: {type: Boolean, required: true},
-   // postNumber: {type: Number, required: true},
+    postNumber: {type: Number, required: true},
    // postedBy: {ref: 'User', required: true}
 });
 

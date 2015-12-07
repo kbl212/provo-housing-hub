@@ -2,15 +2,22 @@ var Listing = require('../models/Listing');
 
 module.exports = {
     
-    
     getListings: function(req,res,next) {
         
-        Listing.find().exec(function(err, result) {
-            console.log(result);
+        if (req.query.postNumber) {
+            Listing.find({ postNumber: req.query.postNumber}).exec(function(err,result) {
+                if (err) res.status(500).send(err);
+                else res.send(result);
+            });
+        }
+        
+        else {
+            Listing.find().exec(function(err, result) {
             
-            if (err) return res.status(500).send(err);
-            else res.send(result);
-        });
+                if (err) return res.status(500).send(err);
+                else res.send(result);
+            });
+        }
     },
     
     
@@ -18,11 +25,12 @@ module.exports = {
         
         var newListing = new Listing(req.body);
         newListing.save(function(err, result) {
-            if (err) return res.status(500).send(err);
+            if (err) {
+                console.log("error posting...", err);
+                return res.status(500).send(err);
+            }
             else res.send(result);
         });
-    
-    
     }
 };
     

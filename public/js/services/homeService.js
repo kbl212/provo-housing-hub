@@ -6,6 +6,8 @@ app.service('homeService', function($http) {
     this.getListings = function(postNumberIn) {
         if (postNumberIn === undefined) {
             return $http.get('/api/listings').then(function(response) {
+                            console.log(response.data);
+
                 return response.data;
             
             });
@@ -31,13 +33,14 @@ app.service('homeService', function($http) {
     }
 */
     
-    this.getCurrDate = function() {
+    this.getCurrDate = function(dateIn) {
         var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        var today = new Date();
-        var month = today.getMonth();
-        var day = today.getDate();
-        var postDate = months[month] + ' ' + day;
-        return postDate;
+        var postDate = dateIn.split('-');
+        console.log(postDate);
+        var month = postDate[1];
+        var day = postDate[2].slice(0,2);
+        var returnDate = months[month-1] + ' ' + day;
+        return returnDate;
     };
     
         this.NewListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, postNumberIn){
@@ -82,11 +85,11 @@ app.service('homeService', function($http) {
         canUseEmail: emailIn,
         canUsePhone: phoneIn,
         wd: wdIn,
-        noSmoke: noSmokeIn,
+        smokingAllowed: noSmokeIn,
         byuApproved: byuIn,
         parking: parkingIn,
         furnished: furnishedIn,
-        datePosted: this.getCurrDate(),
+       // datePosted: this.getCurrDate(),
         postNumber: postNumberIn
         }
         return $http.post('/api/listings', newListingObj).then(function(response) {
