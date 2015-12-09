@@ -88,6 +88,9 @@ h2 {
     border-radius: 10px;
     border: 0;
 }
+.continue-btn:hover {
+    background-color: #0d0d0d;
+}
 
 .search-bar {
     margin: 0 auto;
@@ -323,15 +326,18 @@ h3 {
     font-size: 14px;
 }
 
-.nav .user-logged-in a{
-    color: blue;
-    background-color: red;
-}
-
 .add-change-btn {
     float:right;
 }
 
 .account-info {
     float:left;
+}
+
+#signed-in-nav-li a {
+    background-color: blue;
+}
+
+#signed-in-nav-li a:hover {
+    color: red;
 }

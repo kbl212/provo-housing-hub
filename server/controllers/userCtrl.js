@@ -26,20 +26,31 @@ module.exports = {
             if (err) return res.status(500).send(err);
             else res.send(result);
         });
+    },
+    
+    updateAccountName: function(req,res,next) {
+        
+        var updatedUser = new User();
+        
+        User.findOne({ faceId: req.body.faceId }).exec(function(err,result) {
+            if (err) res.status(500).send(err);
+            else {
+                updatedUser = req.body.currUser;
+                updatedUser.name = req.body.newName;
+                
+                console.log("**************UPDATED USER**************", updatedUser);
+                updatedUser.save(function(err){
+                    if (err)
+                        throw err;
+                    else {
+                        console.log(result);
+                        res.send(result);
+                    }
+            })
+        };
+    });
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 };
 
 

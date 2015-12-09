@@ -12,5 +12,20 @@ app.service('masterService', function($http) {
         });
     }
     
+    this.updateName = function(faceId, newName, currUser) {
+        
+        var updateNameObj = {
+            faceId: faceId,
+            newName: newName,
+            currUser: currUser
+        }
+        
+        return $http.put('/api/account', updateNameObj).then(function(response) {
+            console.log(response);
+            return response;
+        });
+    };
+    
+    
     console.log(this.currentUser);
 });

@@ -10,7 +10,14 @@
         </thead>
         <tbody>
             <tr>
-                <td class="account-info">{{$parent.currentUser.name}} <button class="add-change-btn">Add/Change Display Name</button></td>
+                <td class="account-info">{{$parent.currentUser.name}} <button class="add-change-btn" ng-click="nameInputShowing = !nameInputShowing">Add/Change Display Name</button>
+                </br>
+                </br>
+            <div class="newInfoInput" ng-show="(nameInputShowing)">
+                <input type="text" ng-model="newName" placeholder="Enter new name here...">
+                <button ng-click="$parent.updateName(newName)">Submit</button>
+            </div>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -32,7 +39,7 @@
         </thead>
         <tbody>
             <tr>
-                <td class="account-info">{{$parent.contactEmail}} <button class="add-change-btn">Add/Change Email</button></td>
+                <td class="account-info">{{$parent.currentUser.contactEmail}} <button class="add-change-btn">Add/Change Email</button></td>
                <!-- <td>{{account.users[0].contactEmail}}</td> -->
             </tr>
         </tbody>
@@ -44,7 +51,7 @@
         </thead>
         <tbody>
             <tr>
-                <td class="account-info">{{$parent.contactPhone}} <button class="add-change-btn">Add/Change Contact #</button></td>
+                <td class="account-info">{{$parent.currentUser.contactPhone}} <button class="add-change-btn">Add/Change Contact #</button></td>
                <!-- <td>{{account.users[0].contactEmail}}</td> -->
             </tr>
         </tbody>

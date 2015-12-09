@@ -42,13 +42,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capitalize every word
-    clientID: keys.facebookAuth.clientID,                                //REPLACE THESE KEY LITERALS WITH keys.facebookID...keys.etc
+    clientID: keys.facebookAuth.clientID,                               
     clientSecret: keys.facebookAuth.clientSecret,
     callbackURL: keys.facebookAuth.callbackURL
-    //------change accessToken back to just Token if backin uppppppp.
 }, function(accessToken, refreshToken, profile, done) {
     process.nextTick(function() {
-        User.findOne({'facebook.id' : profile.id}, function(err, user){
+        User.findOne({'faceId' : profile.id}, function(err, user){
             if (err)
                 return done(err);
             if (user)
@@ -56,14 +55,14 @@ passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capi
                 
             else {                        //creates new User
                 var newUser = new User();
-                newUser.id = profile.id;
+                newUser.faceId = profile.id;
                 newUser.token = accessToken;
                 newUser.name = profile.displayName;
-                newUser.avatar = "../public/emptyMan.jpg";
-                console.log("this is newUser: ", newUser);
-              /*  newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName + profile.name + profile.first_name + profile.name.display_name + profile.name.display_Name; */
+                newUser.avatar = "http://www.clker.com/cliparts/U/s/X/0/7/h/white-silhouette-hi.png";
+                newUser.contactEmail = "N/A";
+                newUser.contactPhone = "N/A";
+               // console.log("this is newUser: ", newUser);
 
-              //  console.log("FULL PROFILE: ", newUser);
                 newUser.save(function(err){
                     if (err)
                         throw err;
@@ -72,7 +71,6 @@ passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capi
             };
         });
     });
-  //return done(null, profile);
 }));
 
 
@@ -92,6 +90,7 @@ app.post('/api/listings', listingCtrl.postNewListing);
 
 app.post('/api/account', userCtrl.createNewAccount);
 app.get('/api/account', userCtrl.getUserAccount);
+app.put('/api/account', userCtrl.updateAccountName);
 
 
 app.get('/auth/facebook', passport.authenticate('facebook'));

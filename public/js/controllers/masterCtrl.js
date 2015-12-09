@@ -42,4 +42,12 @@ app.controller('masterCtrl', function($scope, masterService) {
         console.log($scope.currUser);
     };
     
+    
+    $scope.updateName = function(newName) {
+        masterService.updateName($scope.currUser.faceId, newName, $scope.currUser).then(function(result) {
+            $scope.getFacebookInfo;
+        });
+    };
+    
+    
 });

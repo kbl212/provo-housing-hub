@@ -24,11 +24,10 @@
               <li><a ui-sref="newlisting">Post New</a></li>
             <!--  <li><a ui-sref="account">My Account</a></li>  -->
               <li><a ui-sref="signin" ng-hide="signedIn">Sign in</a></li>
-              <li><a ui-sref="account" ng-show="signedIn">{{displayName}}</a></li>
+              <li id="signed-in-nav-li"><a ui-sref="account" ng-show="signedIn" >{{displayName}}</a></li>
 
             </ul>
           </div>
-        
         </div>
 <div ui-view></div>
     
