@@ -6,7 +6,7 @@ app.service('homeService', function($http) {
     this.getListings = function(postNumberIn) {
         if (postNumberIn === undefined) {
             return $http.get('/api/listings').then(function(response) {
-                            console.log(response.data);
+        //                    console.log(response.data);
 
                 return response.data;
             
@@ -36,7 +36,7 @@ app.service('homeService', function($http) {
     this.getCurrDate = function(dateIn) {
         var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         var postDate = dateIn.split('-');
-        console.log(postDate);
+     //   console.log(postDate);
         var month = postDate[1];
         var day = postDate[2].slice(0,2);
         var returnDate = months[month-1] + ' ' + day;

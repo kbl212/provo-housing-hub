@@ -14,7 +14,7 @@
     <title>PHH | Provo Housing Hub</title>
 </head>
 
-<body>
+<body ng-controller="masterCtrl">
     
         <div class="nav nav-top">
           <div class="container">
@@ -22,8 +22,9 @@
               <li><a ui-sref="intro"><!--<img class="logo" src="PHHlogo.png">-->Home</a></li>
               <li><a ui-sref="home">All Listings</a></li>
               <li><a ui-sref="newlisting">Post New</a></li>
-              <li><a ui-sref="account">My Account</a></li>
-              <li><a ui-sref="signin">Sign in</a></li>
+            <!--  <li><a ui-sref="account">My Account</a></li>  -->
+              <li><a ui-sref="signin" ng-hide="signedIn">Sign in</a></li>
+              <li><a ui-sref="account" ng-show="signedIn">{{displayName}}</a></li>
 
             </ul>
           </div>
@@ -47,5 +48,7 @@
     <script src="js/services/newListingService.js"></script>
     <script src="js/controllers/currentListingCtrl.js"></script>
     <script src="js/services/homeService.js"></script>
+    <script src="js/controllers/masterCtrl.js"></script>
+    <script src="js/services/masterService.js"></script>
 </body>
 </html>

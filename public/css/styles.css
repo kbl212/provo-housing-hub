@@ -322,3 +322,16 @@ h3 {
 .address-span {
     font-size: 14px;
 }
+
+.nav .user-logged-in a{
+    color: blue;
+    background-color: red;
+}
+
+.add-change-btn {
+    float:right;
+}
+
+.account-info {
+    float:left;
+}

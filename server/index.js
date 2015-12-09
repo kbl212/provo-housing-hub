@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
-var keys = require('keys');
+var keys = require('./keys');
 var session = require('express-session');
+var User = require('./models/User');
 
 
 ///////////////
@@ -28,20 +29,50 @@ var requireAuth = function(req,res,next) {
         console.log('AUTHENTICATED USER!');
         return next();
     }
+    console.log("nope...");
     return res.redirect('/auth/facebook');
 };
 
-app.use(session({secret: "31415926535"}));
+//express-session, keys, passport, passport-facebook
+
+app.use(session({secret: "31415926535",
+                saveUninitialized: true,
+                resave: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capitalize every word
-    clientID: '1626783207571999',                                //REPLACE THESE KEY LITERALS WITH keys.facebookID...keys.etc
-    clientSecret: '496eb14e955d0a6956fa2db8747bedd2',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback',
-}, function(token, refreshToken, profile, done) {
-    console.log("this is profile id: ", profile.id);
-  return done(null, profile);
+    clientID: keys.facebookAuth.clientID,                                //REPLACE THESE KEY LITERALS WITH keys.facebookID...keys.etc
+    clientSecret: keys.facebookAuth.clientSecret,
+    callbackURL: keys.facebookAuth.callbackURL
+    //------change accessToken back to just Token if backin uppppppp.
+}, function(accessToken, refreshToken, profile, done) {
+    process.nextTick(function() {
+        User.findOne({'facebook.id' : profile.id}, function(err, user){
+            if (err)
+                return done(err);
+            if (user)
+                return done(null, user)   //no error, User
+                
+            else {                        //creates new User
+                var newUser = new User();
+                newUser.id = profile.id;
+                newUser.token = accessToken;
+                newUser.name = profile.displayName;
+                newUser.avatar = "../public/emptyMan.jpg";
+                console.log("this is newUser: ", newUser);
+              /*  newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName + profile.name + profile.first_name + profile.name.display_name + profile.name.display_Name; */
+
+              //  console.log("FULL PROFILE: ", newUser);
+                newUser.save(function(err){
+                    if (err)
+                        throw err;
+                    return done(null, newUser);
+                })
+            };
+        });
+    });
+  //return done(null, profile);
 }));
 
 
@@ -55,24 +86,25 @@ app.use(express.static(__dirname + '/../public'));
 //ENDPOINTS//
 /////////////
 
-app.get('/api/listings', requireAuth, listingCtrl.getListings);
+app.get('/api/listings', listingCtrl.getListings);
 
 app.post('/api/listings', listingCtrl.postNewListing);
 
 app.post('/api/account', userCtrl.createNewAccount);
 app.get('/api/account', userCtrl.getUserAccount);
 
-app.get('/auth/facebook', passport.authenticate('facebook'));
 
+app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     
     successRedirect: '/',
-    failureRedirect: '/login'
+    failureRedirect: '/account'
 }), function(req,res){
     console.log(req.session.user);
 });
 
 passport.serializeUser(function(user, done) {           //function called to allow to you MODIFY before putting data on the session
+    console.log('stuff...', user);
     done(null, user);
     /*
         User.find({facebookId: user.profile.id},
@@ -106,7 +138,7 @@ app.get('/me', requireAuth/*used as middleware here*/, function(req,res) {
 
 
 //----------------server on port 3000
-var port = 3000;
+var port = process.env.PORT || 3000;
 app.listen(port, function() {
     console.log('connected to port ', port);
 });

@@ -5,12 +5,17 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
     
-    fullName: {type: String, required: true},
-    displayName: {type: String, required: true},
+   // fullName: {type: String, required: true},
+   // displayName: {type: String, required: true},
    // listings: [{type: Listing, required: true, default: [] }],
     avatar: String,
     contactPhone: Number,
-    contactEmail: String
+    contactEmail: String,
+    id: String,
+    token: String,
+    email: String,
+    name: String
+
 });
 
 module.exports = mongoose.model('User', userSchema);
