@@ -90,7 +90,7 @@ app.post('/api/listings', listingCtrl.postNewListing);
 
 app.post('/api/account', userCtrl.createNewAccount);
 app.get('/api/account', userCtrl.getUserAccount);
-app.put('/api/account', userCtrl.updateAccountName);
+app.put('/api/account', userCtrl.updateAccount);
 
 
 app.get('/auth/facebook', passport.authenticate('facebook'));

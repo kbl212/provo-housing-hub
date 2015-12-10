@@ -4,8 +4,8 @@ module.exports = {
     
     getUserAccount: function(req,res,next) {
         
-        if (req.query.displayName) {
-            User.find({ displayName: req.query.displayName }).exec(function(err,result) {
+        if (req.query.faceId) {
+            User.find({ faceId: req.query.faceId }).exec(function(err,result) {
                 if (err) res.status(500).send(err);
                 else res.send(result);
             });
@@ -28,18 +28,43 @@ module.exports = {
         });
     },
     
-    updateAccountName: function(req,res,next) {
+    updateAccount: function(req,res,next) {
         
-        var updatedUser = new User();
-        var query = {faceId : req.body.faceId};
-      //  req.newData.name = req.body.newName;
-        User.findOneAndUpdate(query, /*req.newData*/ {name: req.body.newName}, {upsert:true, new:true}, function(err, doc){
-    if (err) return res.send(500, { error: err });
-    else { 
-       // req.user = doc;
-        return res.send(doc);
-         }
-        });
+        if (req.body.newName) {
+            var updatedUser = new User();
+            var query = {faceId : req.body.faceId};
+            User.findOneAndUpdate(query, {name: req.body.newName}, {upsert:true, new:true}, function(err, doc){
+                if (err) return res.send(500, { error: err });
+                else { 
+                    return res.send(doc);
+                }
+            });
+        }
+        
+        else if (req.body.newEmail) {
+            console.log("****THIS IS NEW EMAIL****", req.body.newEmail);
+            var updatedUser = new User();
+            var query = {faceId : req.body.faceId};
+            User.findOneAndUpdate(query, {contactEmail: req.body.newEmail}, {upsert:true, new:true}, function(err, doc){
+                if (err) return res.send(500, { error: err });
+                else { 
+                    return res.send(doc);
+                }
+            });
+        }
+        
+        else if (req.body.newPhone) {
+            console.log("****THIS IS NEW PHONE****", req.body.newPhone);
+            var updatedUser = new User();
+            var query = {faceId : req.body.faceId};
+            User.findOneAndUpdate(query, {contactPhone: req.body.newPhone}, {upsert:true, new:true}, function(err, doc){
+                if (err) return res.send(500, { error: err });
+                else { 
+                    return res.send(doc);
+                }
+            });
+        }
+        
     }
 };
         

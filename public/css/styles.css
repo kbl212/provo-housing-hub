@@ -246,6 +246,7 @@ tbody {
     max-width: 700px;
     background-color: teal;
     margin-top: 100px;
+    text-align: center;
 }
 
 .sign-in-block p {
@@ -340,4 +341,11 @@ h3 {
 
 #signed-in-nav-li a:hover {
     color: red;
+}
+
+.face-btn {
+    width: 500px;
+    height: 100px;
+    background-color: teal;
+    border: teal;
 }

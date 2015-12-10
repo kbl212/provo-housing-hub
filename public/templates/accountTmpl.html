@@ -6,7 +6,7 @@
     
     <table class="table">
         <thead>
-            <td>Name</td>
+            <td>Display Name</td>
         </thead>
         <tbody>
             <tr>
@@ -22,16 +22,7 @@
         </tbody>
     </table>
     <br/>
-    <table class="table">
-        <thead>
-            <td>Username</td>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="account-info">{{users[0].username}} <button class="add-change-btn">Add/Change Username</button></td>
-            </tr>
-        </tbody>
-    </table>
+   
     <br/>
     <table class="table">
         <thead>
@@ -39,11 +30,19 @@
         </thead>
         <tbody>
             <tr>
-                <td class="account-info">{{$parent.currentUser.contactEmail}} <button class="add-change-btn">Add/Change Email</button></td>
-               <!-- <td>{{account.users[0].contactEmail}}</td> -->
+                <td class="account-info">{{$parent.currentUser.contactEmail}} <button class="add-change-btn" ng-click="emailInputShowing = !emailInputShowing">Add/Change Email</button>
+               </br>
+               </br>
+             <div class="newInfoInput" ng-show="(emailInputShowing)">
+                <input type="text" ng-model="newEmail" placeholder="Enter new email address here...">
+                <button ng-click="$parent.updateEmail(newEmail, $parent.currentUser.faceId, $parent.currentUser); emailInputShowing = !emailInputShowing">Submit</button>
+            </div>               
+                </td>
+
             </tr>
         </tbody>
     </table>
+    <br/>
     <br/>
     <table class="table">
         <thead>
@@ -51,7 +50,14 @@
         </thead>
         <tbody>
             <tr>
-                <td class="account-info">{{$parent.currentUser.contactPhone}} <button class="add-change-btn">Add/Change Contact #</button></td>
+                <td class="account-info">{{$parent.currentUser.contactPhone}} <button class="add-change-btn" ng-click="phoneInputShowing = !phoneInputShowing">Add/Change Contact #</button>
+               </br>
+               </br>
+             <div class="newInfoInput" ng-show="(phoneInputShowing)">
+                <input type="text" ng-model="newPhone" placeholder="Enter new phone number here...">
+                <button ng-click="$parent.updatePhone(newPhone, $parent.currentUser.faceId, $parent.currentUser); phoneInputShowing = !phoneInputShowing">Submit</button>
+            </div>               
+                </td>
                <!-- <td>{{account.users[0].contactEmail}}</td> -->
             </tr>
         </tbody>

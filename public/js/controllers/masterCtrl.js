@@ -10,6 +10,8 @@ app.controller('masterCtrl', function($scope, masterService) {
     $scope.displayName = "Sign In";
     
     $scope.getFacebookInfo = function() {
+        // if (!$scope.currentUser)
+        console.log("i am getting FACEBOOK INFO now");
         masterService.getFacebookInfo().then(function(response, err) {
             if (err) 
                 console.log("sorry, error");
@@ -41,7 +43,23 @@ app.controller('masterCtrl', function($scope, masterService) {
             console.log("result = ", result);
             $scope.currentUser = result;
             $scope.displayName = result.name;
-           // $scope.getFacebookInfo();
+          //  $scope.getFacebookInfo();
+        });
+    };
+    
+    $scope.updateEmail = function(newEmail, currUserFaceId, currUser) {
+        
+        masterService.updateEmail(newEmail, currUserFaceId, currUser).then(function(result) {
+            $scope.currentUser = result;
+        //    $scope.getFacebookInfo();
+            
+        });
+    };
+    
+    $scope.updatePhone = function (newPhone, currUserFaceId, currUser) {
+        masterService.updatePhone(newPhone, currUserFaceId, currUser).then(function(result) {
+            $scope.currentUser = result;
+     //       $scope.getFacebookInfo();
         });
     };
     

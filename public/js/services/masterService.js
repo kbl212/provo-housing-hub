@@ -4,11 +4,19 @@ var app = angular.module('provo-housing-hub');
 app.service('masterService', function($http) {
     
     this.getFacebookInfo = function() {
-        
-        return $http.get('/me').then(function(response) {
-            this.currentUser = response;
-            return response.data;
-        });
+      /*  if (this.currentUser) {
+            console.log("what uppppppppppp im here **********");
+            return $http.get('/api/account?' + this.faceId).then(function(response) {
+               this.currentUser = response;
+               return response.data;
+            });
+        }
+        else { */
+            return $http.get('/me').then(function(response) {
+                this.currentUser = response;
+                return response.data;
+            });
+    // }
     }
     
     this.updateName = function(newName, faceId, currUser) {
@@ -24,6 +32,34 @@ app.service('masterService', function($http) {
             return response.data;
         });
     };
+    
+    this.updateEmail = function(newEmail, faceId, currUser) {
+        
+        var updateEmailObj = {
+            faceId: faceId,
+            newEmail: newEmail,
+            currUser: currUser
+        }
+        
+        return $http.put('/api/account', updateEmailObj).then(function(response) {
+            console.log(response);
+            return response.data;
+        });
+    }
+    
+    this.updatePhone = function(newPhone, faceId, currUser) {
+        
+        var updatePhoneObj = {
+            faceId: faceId,
+            newPhone: newPhone,
+            currUser: currUser
+        }
+        
+        return $http.put('/api/account', updatePhoneObj).then(function(response) {
+            console.log(response);
+            return response.data;
+        });
+    }
     
     
     console.log(this.currentUser);
