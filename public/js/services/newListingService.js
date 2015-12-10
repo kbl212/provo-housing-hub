@@ -24,6 +24,9 @@ app.service('newListingService', function($http) {
         
         //make sure this all matches the backend SCHEMA, and that all required info is here, before actually make a NewListing
         
+        
+        console.log("this is imageIn : ", imageIn);
+        
         this.title = titleIn;
         this.address = addressIn;
         this.price = priceIn;
@@ -41,4 +44,7 @@ app.service('newListingService', function($http) {
         this.furnished = furnishedIn;
         return this;
     }
+    
+    
+    
 });

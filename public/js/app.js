@@ -2,25 +2,33 @@ var app = angular.module('provo-housing-hub', ['ui.router'])
 
 
 
-
-
-.directive('fileread', function () {
+.directive('fileread', function (imagesService) {
   return {
     restrict: 'A',
     link: function (scope, elem, attrs) {
-      elem.bind("change", function (changeEvent) {
-          
+      elem.bind("change", function (changeEvent) {          
         var reader = new FileReader();
-        reader.onload = function (loadEvent) {
+
+        reader.onloadend = function (loadEvent) {
           var fileread = loadEvent.target.result;
-          console.log(fileread);
+          
+          var tempArray = elem['context'].value.split('\\');
+          var fileName = tempArray[tempArray.length - 1];
+
+          imagesService.storeImage(fileread, fileName)
+          .then(function (result) {
+            scope.images.unshift(result.data);
+          })
+          .catch(function (err) {
+            console.error(err);
+          });
         }
-        
+
         reader.readAsDataURL(changeEvent.target.files[0]);
       });
     }
   }
-});
+})
 
 
 

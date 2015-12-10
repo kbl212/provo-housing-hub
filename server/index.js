@@ -17,6 +17,7 @@ var User = require('./models/User');
 ///////////////
 var listingCtrl = require('./controllers/listingCtrl');
 var userCtrl = require('./controllers/userCtrl');
+var imageCtrl = require('./controllers/imageCtrl');
 
 
 //////////////
@@ -76,13 +77,16 @@ passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capi
 
 
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cors());
 app.use(express.static(__dirname + '/../public'));
 
 /////////////
 //ENDPOINTS//
 /////////////
+
+app.post('/api/newimage', imageCtrl.saveImage);
 
 app.get('/api/listings', listingCtrl.getListings);
 

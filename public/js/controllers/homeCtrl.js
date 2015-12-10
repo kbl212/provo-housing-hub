@@ -59,7 +59,7 @@ app.controller('homeCtrl', function($scope, homeService) {
             alert("Post successful!");
             var newPostNum = $scope.getNewPostNum();
             
-            
+            console.log("this is imageIn: ", imageIn);
     homeService.NewListing(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, newPostNum).then(function(response) {
         console.log("this is POST response: ", response);
     });
