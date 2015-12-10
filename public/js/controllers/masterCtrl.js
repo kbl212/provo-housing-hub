@@ -17,7 +17,6 @@ app.controller('masterCtrl', function($scope, masterService) {
                 $scope.currentUser = response;
                 $scope.getDisplayName();
                 $scope.signedIn = 'user-logged-in';
-                console.log("this is control response to /me: ", response);
             }
         });
     };
@@ -26,7 +25,6 @@ app.controller('masterCtrl', function($scope, masterService) {
     
     
     $scope.getDisplayName = function() {
-        console.log("currUser = ", $scope.currentUser);
         if ($scope.currentUser.name) {
             $scope.displayName = $scope.currentUser.name;
             $scope.currRoute = 'account';
@@ -36,16 +34,14 @@ app.controller('masterCtrl', function($scope, masterService) {
         }
     };
     
-  //  $scope.getDisplayName();
     
-    $scope.showCurrUser = function() {
-        console.log($scope.currUser);
-    };
-    
-    
-    $scope.updateName = function(newName) {
-        masterService.updateName($scope.currUser.faceId, newName, $scope.currUser).then(function(result) {
-            $scope.getFacebookInfo;
+    $scope.updateName = function(newName, currUserFaceId, currUser) {
+
+        masterService.updateName(newName, currUserFaceId, currUser).then(function(result) {
+            console.log("result = ", result);
+            $scope.currentUser = result;
+            $scope.displayName = result.name;
+           // $scope.getFacebookInfo();
         });
     };
     

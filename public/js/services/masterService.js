@@ -6,13 +6,12 @@ app.service('masterService', function($http) {
     this.getFacebookInfo = function() {
         
         return $http.get('/me').then(function(response) {
-            console.log("this is /me response: ", response);
             this.currentUser = response;
             return response.data;
         });
     }
     
-    this.updateName = function(faceId, newName, currUser) {
+    this.updateName = function(newName, faceId, currUser) {
         
         var updateNameObj = {
             faceId: faceId,
@@ -22,7 +21,7 @@ app.service('masterService', function($http) {
         
         return $http.put('/api/account', updateNameObj).then(function(response) {
             console.log(response);
-            return response;
+            return response.data;
         });
     };
     

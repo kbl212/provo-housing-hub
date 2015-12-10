@@ -6,6 +6,17 @@ app.controller('accountCtrl', function($scope) {
     
     $scope.nameInputShowing = false;
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     $scope.users = [
         
         {

@@ -31,15 +31,29 @@ module.exports = {
     updateAccountName: function(req,res,next) {
         
         var updatedUser = new User();
+        var query = {faceId : req.body.faceId};
+      //  req.newData.name = req.body.newName;
+        User.findOneAndUpdate(query, /*req.newData*/ {name: req.body.newName}, {upsert:true, new:true}, function(err, doc){
+    if (err) return res.send(500, { error: err });
+    else { 
+       // req.user = doc;
+        return res.send(doc);
+         }
+        });
+    }
+};
         
+        
+        
+     /*   
         User.findOne({ faceId: req.body.faceId }).exec(function(err,result) {
             if (err) res.status(500).send(err);
             else {
                 updatedUser = req.body.currUser;
+                console.log(req.body.currUser);
                 updatedUser.name = req.body.newName;
                 
-                console.log("**************UPDATED USER**************", updatedUser);
-                updatedUser.save(function(err){
+                updatedUser.save(function(err, result){
                     if (err)
                         throw err;
                     else {
@@ -50,8 +64,8 @@ module.exports = {
         };
     });
 
-    }
-};
+    } */
+
 
 
 /*  getUserAccount: function(req,res,next) {
