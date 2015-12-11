@@ -18,20 +18,11 @@ var app = angular.module('provo-housing-hub', ['ui.router'])
 
             
             
-            app.controller('imageCtrl', function($scope) {
-                $scope.fileName = fileName;
-                $scope.fileread = fileread;
-            });
-/*          imagesService.storeImage(fileread, fileName)
-          .then(function (result) {
-            console.log(result);
-          //  scope.images.unshift(result.data);
-          })
-          .catch(function (err) {
-            console.error(err);
-          });
+            scope.$parent.fileread = fileread;
+            scope.$parent.fileName = fileName;
+            
+            
         }
-*/
         reader.readAsDataURL(changeEvent.target.files[0]);
       });
     }

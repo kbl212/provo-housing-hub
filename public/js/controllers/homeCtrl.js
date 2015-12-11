@@ -1,6 +1,6 @@
 var app = angular.module('provo-housing-hub');
 
-app.controller('homeCtrl', function($scope, homeService) {
+app.controller('homeCtrl', function($scope, homeService, imagesService) {
     
     $scope.listView = "active-view";
     $scope.galleryView = "inactive-view";
@@ -55,15 +55,44 @@ app.controller('homeCtrl', function($scope, homeService) {
         return (highestSoFar + 1);
     }
     
-        $scope.newListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn) {
+    
+    
+
+    $scope.storeNewImage = function() {    
+    
+       return imagesService.storeImage($scope.fileread, $scope.fileName)
+          .then(function (result) {
+            console.log(result.data.Location);
+            $scope.currImageToPost = result.data.Location;
+            return result.data.Location;
+          //  scope.images.unshift(result.data);
+          })
+          .catch(function (err) {
+            console.error(err);
+          });
+    };
+    
+    $scope.newListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn) {
             alert("Post successful!");
             var newPostNum = $scope.getNewPostNum();
-            
+        
+         //   $scope.storeNewImage(); probably don't need the line below this either;
+            imageIn = $scope.currImageToPost;
             console.log("this is imageIn: ", imageIn);
-    homeService.NewListing(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, newPostNum).then(function(response) {
+        
+    $scope.storeNewImage()
+    .then(function(imgURLResponse){
+        homeService.NewListing(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imgURLResponse, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, newPostNum)})
+      .then(function(response) {
         console.log("this is POST response: ", response);
+    }).then(function(response) {
+        $scope.getListings();              
     });
+}
+    
+    
+    
 
-    }
+
 
 });
