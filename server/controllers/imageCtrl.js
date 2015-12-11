@@ -29,7 +29,7 @@ exports.saveImage = function (req, res) {
   s3.upload(params, function (err, data) {
     console.log(err, data);
     if (err) return res.status(500).send(err);
-
+      console.log("////////////////////FINAL RESULT: ", data);
     // TODO: save data to mongo
     res.json(data);
   });

@@ -12,23 +12,31 @@ var app = angular.module('provo-housing-hub', ['ui.router'])
         reader.onloadend = function (loadEvent) {
           var fileread = loadEvent.target.result;
           
-          var tempArray = elem['context'].value.split('\\');
+            
+          var tempArray = elem[0].value.split('\\');
           var fileName = tempArray[tempArray.length - 1];
 
-          imagesService.storeImage(fileread, fileName)
+            
+            
+            app.controller('imageCtrl', function($scope) {
+                $scope.fileName = fileName;
+                $scope.fileread = fileread;
+            });
+/*          imagesService.storeImage(fileread, fileName)
           .then(function (result) {
-            scope.images.unshift(result.data);
+            console.log(result);
+          //  scope.images.unshift(result.data);
           })
           .catch(function (err) {
             console.error(err);
           });
         }
-
+*/
         reader.readAsDataURL(changeEvent.target.files[0]);
       });
     }
   }
-})
+});
 
 
 

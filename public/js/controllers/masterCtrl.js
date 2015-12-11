@@ -11,7 +11,7 @@ app.controller('masterCtrl', function($scope, masterService) {
     
     $scope.getFacebookInfo = function() {
         // if (!$scope.currentUser)
-        console.log("i am getting FACEBOOK INFO now");
+       // console.log("i am getting FACEBOOK INFO now");
         masterService.getFacebookInfo().then(function(response, err) {
             if (err) 
                 console.log("sorry, error");

@@ -62,5 +62,5 @@ app.service('masterService', function($http) {
     }
     
     
-    console.log(this.currentUser);
+   // console.log(this.currentUser);
 });
