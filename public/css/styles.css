@@ -92,11 +92,15 @@ h2 {
     background-color: #0d0d0d;
 }
 
+.notice {
+    margin-top 100px;
+}
+
 .search-bar {
     margin: 0 auto;
     text-align: center;
     width: 700px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 form {
@@ -249,7 +253,7 @@ tbody {
 .new-listing-info {
     max-width: 700px;
     margin: 0 auto;
-    color: #fff;
+   /* color: #fff;*/
 }
 
 .checkboxes {
@@ -376,4 +380,26 @@ h3 {
 
 #price, #totalBeds, #totalBaths, #sqFootage {
     max-width: 150px;
+}
+
+.log-in-first {
+    background-color: red;
+    color: black;
+    font-weight: bold;
+}
+
+.form-small {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.new-listing-contain {
+    background-color: teal;
+    max-width: 750px;
+}
+
+.new-listing-contain .help-block {
+    color: #000;
+    font-style: italic;
 }

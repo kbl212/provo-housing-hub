@@ -43,7 +43,6 @@ app.controller('homeCtrl', function($scope, homeService, imagesService) {
        });
     };
     
-    
     $scope.getListings();  //*****RUNS at page load
     
     $scope.getNewPostNum = function() {
@@ -55,14 +54,12 @@ app.controller('homeCtrl', function($scope, homeService, imagesService) {
         return (highestSoFar + 1);
     }
     
-    
-    
 
     $scope.storeNewImage = function() {    
     
        return imagesService.storeImage($scope.fileread, $scope.fileName)
           .then(function (result) {
-            console.log(result.data.Location);
+           // console.log(result.data.Location);
             $scope.currImageToPost = result.data.Location;
             return result.data.Location;
           //  scope.images.unshift(result.data);
@@ -72,22 +69,25 @@ app.controller('homeCtrl', function($scope, homeService, imagesService) {
           });
     };
     
-    $scope.newListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn) {
+    $scope.newListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, currUserId) {
+         //   console.log(currUserId);
             alert("Post successful!");
             var newPostNum = $scope.getNewPostNum();
         
          //   $scope.storeNewImage(); probably don't need the line below this either;
             imageIn = $scope.currImageToPost;
-            console.log("this is imageIn: ", imageIn);
+         //   console.log("this is imageIn: ", imageIn);
         
     $scope.storeNewImage()
     .then(function(imgURLResponse){
-        homeService.NewListing(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imgURLResponse, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, newPostNum)})
+        console.log("THIS IS IMAGE RESPONSE FROM AMAZON: ", imgURLResponse);
+        homeService.NewListing(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imgURLResponse, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, newPostNum, currUserId)})
       .then(function(response) {
-        console.log("this is POST response: ", response);
+      //  console.log("this is POST response: ", response);
     }).then(function(response) {
-        $scope.getListings();              
+        $scope.getListings();              //***************don't need this...?
     });
+
 }
     
     

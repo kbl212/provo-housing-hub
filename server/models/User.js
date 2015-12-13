@@ -11,9 +11,11 @@ var userSchema = new Schema({
     avatar: String,
     contactPhone: String,
     contactEmail: String,
-    faceId: String,
+    faceId: {type: String, required:true},
     token: String,
-    name: String
+    name: String,
+    listings: [{type: mongoose.Schema.Types.ObjectId, ref: 'Listing', default: [], required:true}]  
+    //"Many" listings
 
 });
 

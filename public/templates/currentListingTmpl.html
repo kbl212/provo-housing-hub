@@ -15,6 +15,7 @@
             <span class="">Quick Facts</span>
         </thead>
         <tbody>
+            
           <tr>
             <td class="td-first">Monthly:</td>
             <td class="td-second">${{currListing.price}}</td>
@@ -54,7 +55,16 @@
             <td class="td-first">BYU approved:</td>
             <td class="td-second">{{currListing.byuApproved}}</td>
           </tr>
-
+            
+          <tr ng-show="currListing.canUsePhone">
+            <td class="td-first">Contact # for more info: </td>
+            <td class="td-second">{{currListing.postedBy.contactPhone}}</td>
+          </tr>
+            
+          <tr ng-show="currListing.canUseEmail">
+            <td class="td-first">Contact email for more info:</td>
+            <td class="td-second">{{currListing.postedBy.contactEmail}}</td>
+          </tr>
 
         </tbody>
     </table>

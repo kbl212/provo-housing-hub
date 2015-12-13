@@ -1,11 +1,11 @@
 var Listing = require('../models/Listing');
-
+var User = require('../models/User');
 module.exports = {
     
     getListings: function(req,res,next) {
         
         if (req.query.postNumber) {
-            Listing.find({ postNumber: req.query.postNumber}).exec(function(err,result) {
+            Listing.find({ postNumber: req.query.postNumber}).populate('postedBy').exec(function(err,result) {
                 if (err) res.status(500).send(err);
                 else res.send(result);
             });
@@ -21,19 +21,119 @@ module.exports = {
     },
     
     
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     postNewListing: function(req,res,next) {
         
         var newListing = new Listing(req.body);
+        
         newListing.save(function(err, result) {
             if (err) {
                 console.log("error posting...", err);
                 return res.status(500).send(err);
             }
-            else res.send(result);
+            else {
+                
+                res.send(result);
+                
+            }
         });
     }
 };
     
+
+
+   /* 
+            if (req.body.newName) {
+            var updatedUser = new User();
+            var query = {faceId : req.body.faceId};
+            User.findOneAndUpdate(query, {name: req.body.newName}, {upsert:true, new:true}, function(err, doc){
+                if (err) return res.send(500, { error: err });
+                else { 
+                    return res.send(doc);
+                }
+            });
+        }
+    
+    
+    
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
     getListings: function(req,res,next) {
         var newArr = [];

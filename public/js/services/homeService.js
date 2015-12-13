@@ -43,7 +43,7 @@ app.service('homeService', function($http) {
         return returnDate;
     };
     
-        this.NewListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, postNumberIn){
+        this.NewListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, postNumberIn, currUserIn){
         if (petsIn === undefined)
             petsIn = false;
         if (emailIn === undefined)
@@ -71,6 +71,7 @@ app.service('homeService', function($http) {
         if (bathsIn === undefined)
             bathsIn = 0;
         
+        console.log ("what is currUserIn ID?: ", currUserIn);
         //make sure this all matches the backend SCHEMA, and that all required info is here, before actually make a NewListing
         var newListingObj = {
         title: titleIn,
@@ -90,7 +91,8 @@ app.service('homeService', function($http) {
         parking: parkingIn,
         furnished: furnishedIn,
        // datePosted: this.getCurrDate(),
-        postNumber: postNumberIn
+        postNumber: postNumberIn,
+        postedBy: currUserIn
         }
         return $http.post('/api/listings', newListingObj).then(function(response) {
             return response.data;

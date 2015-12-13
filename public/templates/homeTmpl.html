@@ -1,6 +1,7 @@
 <div class="main-body" ng-controller="homeCtrl">
   <div class="container">
     <form>
+        <p class="help-block notice">*NOTE* Most recent listings may not appear until page is refreshed.</p>
         <input class="search-bar" placeholder="Search all listings..." ng-model="searchListings" >
     </form>
     <br/>
@@ -46,7 +47,6 @@
 
 
 <!-- GALLERY VIEW -->
-
 <div class="container" ng-show="galleryView === 'active-view'">
 
     <a ui-sref="currentListing"><div class="gallery-listing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">

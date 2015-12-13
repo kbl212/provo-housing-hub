@@ -19,11 +19,13 @@ app.controller('masterCtrl', function($scope, masterService) {
                 $scope.currentUser = response;
                 $scope.getDisplayName();
                 $scope.signedIn = 'user-logged-in';
+              //  console.log($scope.currentUser._id);
             }
         });
     };
     
         $scope.getFacebookInfo();
+       
     
     
     $scope.getDisplayName = function() {
@@ -40,7 +42,7 @@ app.controller('masterCtrl', function($scope, masterService) {
     $scope.updateName = function(newName, currUserFaceId, currUser) {
 
         masterService.updateName(newName, currUserFaceId, currUser).then(function(result) {
-            console.log("result = ", result);
+           // console.log("result = ", result);
             $scope.currentUser = result;
             $scope.displayName = result.name;
           //  $scope.getFacebookInfo();

@@ -14,6 +14,7 @@ app.service('masterService', function($http) {
         else { */
             return $http.get('/me').then(function(response) {
                 this.currentUser = response;
+                console.log("-/-/-/-/THIS IS CURR-USER-/-/-/-/", response);
                 return response.data;
             });
     // }
