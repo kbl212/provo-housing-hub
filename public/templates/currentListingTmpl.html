@@ -33,27 +33,26 @@
             
           <tr>
             <td class="td-first">Washer/Dryer in unit:</td>
-            <td class="td-second">{{currListing.wd}}</td>
+            <td class="td-second" ng-show="currListing.wd == true">Yes</td>
+            <td class="td-second" ng-show="currListing.wd == false">No</td>
           </tr>
             
           <tr>
             <td class="td-first">Smoking Allowed:</td>
-            <td class="td-second">{{currListing.smokingAllowed}}</td>
+            <td class="td-second" ng-show="currListing.smokingAllowed == true">Yes</td>
+            <td class="td-second" ng-show="currListing.smokingAllowed == false">No</td>
           </tr>
 
           <tr>
             <td class="td-first">Pets Allowed:</td>
-            <td class="td-second">{{currListing.pets}}</td>
-          </tr>
-
-          <tr>
-            <td class="td-first">Pets Allowed:</td>
-            <td class="td-second">{{currListing.pets}}</td>
+            <td class="td-second" ng-show="currListing.pets == true">Yes</td>
+            <td class="td-second" ng-show="currListing.pets == false">No</td>
           </tr>
             
           <tr>
             <td class="td-first">BYU approved:</td>
-            <td class="td-second">{{currListing.byuApproved}}</td>
+            <td class="td-second" ng-show="currListing.byuApproved == true">Yes</td>
+            <td class="td-second" ng-show="currListing.byuApproved == false">No</td>
           </tr>
             
           <tr ng-show="currListing.canUsePhone">
@@ -69,5 +68,6 @@
         </tbody>
     </table>
     </div>
-
+</br>
+</br>
 </div>

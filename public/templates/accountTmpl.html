@@ -64,17 +64,17 @@
     </table>
     <br/>
     <br/>
-    <table class="table">
+   <!-- <table class="table">
         <thead>
             <td>My Current Listings</td>
         </thead>
         <tbody>
-            <tr>
-                <td class="account-info">{{$parent.currentUser.contactPhone}}
+            <tr ng-repeat="listings in userListings">
+                <td class="account-info">{{listings.title}}
              
                 </td>
                <!-- <td>{{account.users[0].contactEmail}}</td> -->
-            </tr>
+  <!--          </tr>
         </tbody>
-    </table>
+    </table>  -->
 </div>
