@@ -75,7 +75,7 @@ app.controller('homeCtrl', function($scope, homeService, imagesService) {
             var newPostNum = $scope.getNewPostNum();
         
          //   $scope.storeNewImage(); probably don't need the line below this either;
-            imageIn = $scope.currImageToPost;
+         //   imageIn = $scope.currImageToPost;
          //   console.log("this is imageIn: ", imageIn);
         
     $scope.storeNewImage()
@@ -83,7 +83,7 @@ app.controller('homeCtrl', function($scope, homeService, imagesService) {
         console.log("THIS IS IMAGE RESPONSE FROM AMAZON: ", imgURLResponse);
         homeService.NewListing(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imgURLResponse, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, newPostNum, currUserId)})
       .then(function(response) {
-      //  console.log("this is POST response: ", response);
+        console.log("this is POST response: ", response);
     }).then(function(response) {
         $scope.getListings();              //***************don't need this...?
     });

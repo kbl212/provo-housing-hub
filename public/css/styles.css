@@ -208,7 +208,7 @@ tbody {
 
 .avatar-img {
     margin-right: 30px;
-    height: 400px;
+    height: 500px;
     width:30%;
     min-width:300px;
 }
@@ -411,4 +411,8 @@ h3 {
 .new-listing-contain .help-block {
     color: #000;
     font-style: italic;
+}
+
+.gallery-contain {
+    text-align: center;
 }

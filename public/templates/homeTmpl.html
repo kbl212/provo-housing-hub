@@ -47,7 +47,7 @@
 
 
 <!-- GALLERY VIEW -->
-<div class="container" ng-show="galleryView === 'active-view'">
+<div class="container gallery-contain" ng-show="galleryView === 'active-view'">
 
     <a ui-sref="currentListing"><div class="gallery-listing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
         <img class="gallery-pic" src="{{listing.picture}}">
