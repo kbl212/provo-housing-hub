@@ -199,8 +199,8 @@ thead {
     height: 500px;
 }
 
-.avatar-img, table {
-    display:inline;
+table {
+    display:inline
 }
 
 td {

@@ -3,14 +3,16 @@ var User = require('../models/User');
 module.exports = {
     
     getUserAccount: function(req,res,next) {
-        
+        console.log("wait...what?");
+
         if (req.query.faceId) {
-            User.find({ faceId: req.query.faceId }).exec(function(err,result) {
+            User.find({ faceId: req.query.faceId }).populate('listings').exec(function(err,result) {
                 if (err) res.status(500).send(err);
                 else res.send(result);
             });
         }
         else {
+            console.log("wait...what?");
             User.find().exec(function(err, result) {
             
                 if (err) return res.status(500).send(err);
@@ -60,6 +62,23 @@ module.exports = {
             User.findOneAndUpdate(query, {contactPhone: req.body.newPhone}, {upsert:true, new:true}, function(err, doc){
                 if (err) return res.send(500, { error: err });
                 else { 
+                    return res.send(doc);
+                }
+            });
+        }
+        
+        else if (req.body.mongoId) {
+            console.log("****ADDING TO FAVORITES****", req.body.mongoId);
+
+            var updatedUser = new User();
+            var newId = req.body.mongoId;
+            console.log(newId);
+            var query = {faceId: req.body.faceId};
+            User.findOneAndUpdate(query, {$push: {listings: newId}}, {upsert:true, new:true}, function(err, doc){
+                if (err) return res.status(500).send(err);
+                else
+                {
+                    console.log("we got it");
                     return res.send(doc);
                 }
             });

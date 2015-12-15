@@ -70,7 +70,7 @@
             <td class="thead-sort curr-listings-thumb">Current Listings</td>
         </thead>
         <tbody>
-            <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings" ng-click="getOneListing(listing.postNumber)">
+            <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
                 <td class="thumb-td"><img class="thumb-img" src="{{listing.picture}}"></td>
                 <td class="thumb-other-td">{{listing.datePosted}}---{{listing.title}}
         </br>

@@ -1,10 +1,9 @@
-<div class="container" ng-controller="accountCtrl">
+<div class="container all-account-info" ng-controller="accountCtrl">
     
     <br/>
     <img src="{{$parent.currentUser.avatar}}" class="avatar-img" align="left">
     
-    
-    <table class="table">
+    <table class="table account-tbl">
         <thead>
             <td>Display Name</td>
         </thead>
@@ -64,17 +63,16 @@
     </table>
     <br/>
     <br/>
-   <!-- <table class="table">
+    <table class="table">
         <thead>
-            <td>My Current Listings</td>
+            <td>My Favorite Listings</td>
         </thead>
         <tbody>
-            <tr ng-repeat="listings in userListings">
-                <td class="account-info">{{listings.title}}
-             
+            <tr ng-repeat="listing in $parent.currentUser.listings">
+                <td class="account-info">
+                    {{listing}}
                 </td>
-               <!-- <td>{{account.users[0].contactEmail}}</td> -->
-  <!--          </tr>
+           </tr>
         </tbody>
-    </table>  -->
+    </table>
 </div>

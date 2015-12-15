@@ -62,15 +62,19 @@ app.service('masterService', function($http) {
         });
     }
     
-    this.addToFavorites = function(postNumberIn, currentUserIn) {
-        /*
-        var addToFavorites = {
-            
+    this.addToFavorites = function(mongoIdIn, faceIdIn, currUserIn) {
+        var addToFavesObj = {
+            mongoId: mongoIdIn,
+            faceId: faceIdIn,
+            currUser: currUserIn
         }
-        
-        return ($http.put('/api/account', */
-        return 5;
+        return $http.put('/api/account', addToFavesObj).then(function(response) {
+            console.log(response);
+            return response.data;
+        });
     }
+    
+
     
     
    // console.log(this.currentUser);

@@ -22,45 +22,6 @@ module.exports = {
     
     
     
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     postNewListing: function(req,res,next) {
         
         var newListing = new Listing(req.body);

@@ -65,13 +65,14 @@ app.controller('masterCtrl', function($scope, masterService) {
         });
     };
     
-    $scope.addToFavorites = function(postNumber) {
-        if (!$scope.currentUser.name) {
+    $scope.addToFavorites = function(mongoId, currUserFaceId, currUser) {
+        if (!$scope.currentUser) {
             alert("Sorry, you need to sign in first!");
         }
         
         else {
-            masterService.addToFavorites(postNumber, currentUser).then(function(response) {
+            alert("Added to Favorites!");
+            masterService.addToFavorites(mongoId, currUserFaceId, currUser).then(function(response) {
             console.log("add to favorites response: ", response);
             });
         }

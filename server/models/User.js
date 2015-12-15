@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 //var Listing = require('Listing');   //might have to add full path?
 var Schema = mongoose.Schema;
+var Listing = require('./Listing');
 
 
 var userSchema = new Schema({
