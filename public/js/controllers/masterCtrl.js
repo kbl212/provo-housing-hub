@@ -65,5 +65,18 @@ app.controller('masterCtrl', function($scope, masterService) {
         });
     };
     
+    $scope.addToFavorites = function(postNumber) {
+        if (!$scope.currentUser.name) {
+            alert("Sorry, you need to sign in first!");
+        }
+        
+        else {
+            masterService.addToFavorites(postNumber, currentUser).then(function(response) {
+            console.log("add to favorites response: ", response);
+            });
+        }
+
+    }
+    
     
 });

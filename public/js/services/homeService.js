@@ -97,5 +97,7 @@ app.service('homeService', function($http) {
         return $http.post('/api/listings', newListingObj).then(function(response) {
             return response.data;
         });
-    }
+    };
+        
+    
 });

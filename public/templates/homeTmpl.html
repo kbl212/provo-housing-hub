@@ -6,9 +6,12 @@
     </form>
     <br/>
     <form>
-        <button ng-class="listView" ng-click="listView='active-view'; galleryView='inactive-view'">List View</button>
-        <button ng-class="galleryView" ng-click="galleryView='active-view'; listView='inactive-view'">Gallery View</button>       <!-- *** EVERY TIME THIS BUTTON IS CLICKED, CALL $scope.resizePic() function, to resize all pics before displaying them! -->
+        <button class="tog-btn" ng-class="listView" ng-click="listView='active-view'; galleryView='inactive-view'; thumbnailView='inactive-view'">List View</button>
+        <button class="tog-btn"  ng-class="thumbnailView" ng-click="thumbnailView='active-view'; galleryView='inactive-view'; listView='inactive-view'">Thumbnail View</button>
+        <button class="tog-btn"  ng-class="galleryView" ng-click="galleryView='active-view'; listView='inactive-view'; thumbnailView='inactive-view'">Gallery View</button>
     </form>
+
+
 </div>
 
 </br>
@@ -26,7 +29,7 @@
         <thead>
             <td class="thead-sort" ng-click="changeSortType('postNumber')">Date Posted</td>
             <td class="thead-sort" ng-click="changeSortType('title')">Current Listings</td>
-            <td class="thead-sort" ng-click="changeSortType('beds')">Beds</td>
+            <td class="thead-sort" ng-click="changeSortType('beds')">Bedrooms</td>
             <td class="thead-sort" ng-click="changeSortType('price')">Price ($)/mo</td>
         </thead>
         <tbody>
@@ -56,4 +59,39 @@
         <p class="gallery-title">{{listing.title}}</p>
   </div></a>
 </div>
+
+
+
+<!--THUMBNAIL VIEW -->
+<div class="container thumb-contain" ng-show="thumbnailView === 'active-view'">
+    <table class="table table-hover listing-table">
+        <thead>
+            <td>Image</td>
+            <td class="thead-sort curr-listings-thumb">Current Listings</td>
+        </thead>
+        <tbody>
+            <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings" ng-click="getOneListing(listing.postNumber)">
+                <td class="thumb-td"><img class="thumb-img" src="{{listing.picture}}"></td>
+                <td class="thumb-other-td">{{listing.datePosted}}---{{listing.title}}
+        </br>
+        </br>
+               <span class="price-span">${{listing.price | number:0}}</span> --- {{listing.beds}} br --- ({{listing.address}})
+                
+            </tr></a>
+        </tbody>
+    
+    </table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
 </div>

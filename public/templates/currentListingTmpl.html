@@ -1,7 +1,8 @@
 <div class="custom-container one-listing" ng-controller="homeCtrl" ng-init="getCurrentListing()">
     <div class="listing-display">
+            <img src="../favorites.png" class="star-pic" ng-click="$parent.addToFavorites({{currListing.postNumber}})">
     </br>
-        <h3>${{currListing.price}} / {{currListing.beds}}br  -- {{currListing.title}} <span class="address-span">({{currListing.address}})</span></h3>
+        <h3><span class="price-span">${{currListing.price}}</span> / {{currListing.beds}}br  -- {{currListing.title}} <span class="address-span">({{currListing.address}})</span></h3>
     </br>
         <div> <img class="one-listing-pic" src="{{currListing.picture}}"/> </div>
     </br>

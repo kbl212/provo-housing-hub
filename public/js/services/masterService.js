@@ -62,6 +62,16 @@ app.service('masterService', function($http) {
         });
     }
     
+    this.addToFavorites = function(postNumberIn, currentUserIn) {
+        /*
+        var addToFavorites = {
+            
+        }
+        
+        return ($http.put('/api/account', */
+        return 5;
+    }
+    
     
    // console.log(this.currentUser);
 });
