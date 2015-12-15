@@ -212,9 +212,10 @@ tbody {
 
 .avatar-img {
     margin-right: 30px;
-    height: 500px;
-    width:30%;
-    max-width: 500px;
+    height: 100%;
+    max-height: 500px;
+    width:100%;
+    max-width: 350px;
     min-width:300px;
 }
 
@@ -371,9 +372,9 @@ h3 {
     float:right;
 }
 
-.account-info {
+/*.account-info {
     float:left;
-}
+} */
 
 #signed-in-nav-li a {
     background-color: blue;
@@ -462,4 +463,113 @@ h3 {
 }
 
 .curr-listings-thumb {
+}
+
+.nav-menu-lines {
+    font-size: 18px;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px;
+}
+
+.nav-menu-lines:hover {
+    cursor: pointer;
+}
+
+
+/* ---------------------------------MEDIA QUERIES------------------------------- */
+
+
+@media screen and (max-width:1360px) {
+    .gallery-listing {
+        width: 45%;
+        height: 45%;
+    }
+    .nav li {
+        padding-left: 2%;
+        padding-right: 2%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    .account-tbl {
+        width: 80%;
+        min-width: 320px;
+    }
+    
+    .avatar-img {
+        margin-left: 200px;
+    }
+    
+    .sign-in-block {
+        width: 90%;
+        min-width: 320px;
+    }
+}
+
+
+@media screen and (max-width:959px) {
+    .nav li {
+        padding-left: 2%;
+        padding-right: 2%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .search-bar {
+        margin: 0 auto;
+        width: 90%;
+    }
+    
+    .main-body {
+        min-width: 400px;
+    }
+    
+    #signed-in-nav-li {
+        float:right;
+    }
+    
+    .gallery-listing {
+        width: 65%;
+        height: 65%;
+        min-width: 320px;
+    }
+    
+    #description {
+        min-width: 200px;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:640px) {
+    .nav li {
+        display: block;
+    }
+    .nav {
+        height: 350px;
+    }
+    
+    #signed-in-nav-li {
+        float: none;
+    }
+    
+    .jumbotron h2 {
+        width: 90%;
+        min-width: 300px;
+    }
+    
+    .avatar-img {
+        margin-left: 20px;
+    }
+    
+    .account-tbl td {
+        max-width: 320px;
+    }
+    
+    .face-btn {
+        width: 200px;
+    }
+    
+    
+    
 }
