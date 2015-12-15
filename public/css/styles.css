@@ -539,6 +539,15 @@ h3 {
         min-width: 200px;
         width: 90%;
     }
+    
+    .custom-container {
+        width: 90%;
+        min-width: 320px;
+    }
+    
+    .one-listing-pic {
+        height: 350px;
+    }
 }
 
 @media screen and (max-width:640px) {
@@ -554,7 +563,8 @@ h3 {
     }
     
     .jumbotron h2 {
-        width: 90%;
+        width: 70%;
+        left: 50px;
         min-width: 300px;
     }
     
@@ -570,6 +580,13 @@ h3 {
         width: 200px;
     }
     
+    .one-listing-pic {
+        height: 280px;
+    }
     
+    .continue-btn {
+    top: 400px;
+    left: 100px;
+    }
     
 }
