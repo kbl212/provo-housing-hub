@@ -17,6 +17,14 @@ app.controller('masterCtrl', function($scope, masterService) {
                 console.log("sorry, error");
             else {
                 $scope.currentUser = response;
+                masterService.getFaves($scope.currentUser.faceId).then(function(response, err) {
+                    
+            if (err)
+                console.log("error getting FAVES");
+            else {
+                $scope.currentUser.listings = response.data[0].listings;
+            }
+            });
                 $scope.getDisplayName();
                 $scope.signedIn = 'user-logged-in';
               //  console.log($scope.currentUser._id);

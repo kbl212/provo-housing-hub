@@ -74,6 +74,14 @@ app.service('masterService', function($http) {
         });
     }
     
+    this.getFaves = function(faceId) {
+        
+        return $http.get('/api/account?faceId=' + faceId).then(function(response) {
+            console.log("this is crazy...lol:", response);
+            return response;
+        });
+    };
+    
 
     
     

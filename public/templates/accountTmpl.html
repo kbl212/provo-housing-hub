@@ -63,14 +63,18 @@
     </table>
     <br/>
     <br/>
+    <br/>
+    <br/>
     <table class="table account-tbl">
         <thead>
+            <td>Img</td>
             <td>My Favorite Listings</td>
         </thead>
         <tbody>
-            <tr ng-repeat="listing in $parent.currentUser.listings">
+            <tr ui-sref="currentListing" ng-repeat="listing in $parent.currentUser.listings">
+                <td class="thumb-td"><img class="tiny-thumb-img" src="{{listing.picture}}"></td>
                 <td class="account-info">
-                    {{listing}}
+                    {{listing.title}}
                 </td>
            </tr>
         </tbody>
