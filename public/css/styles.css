@@ -580,7 +580,8 @@ h3 {
     }
     
     .avatar-img {
-        margin-left: 20px;
+        margin-left: 0px; 
+        margin-bottom: 20px;
     }
     
     .account-tbl td {

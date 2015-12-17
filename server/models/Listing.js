@@ -1,11 +1,9 @@
 var mongoose = require('mongoose');
-//var User = require('User');
 var Schema = mongoose.Schema;
 var User = require('./User');
 
 
 
-// ***default datePosted is set to Date.now...
 
 var listingSchema = new Schema({
     
