@@ -2,7 +2,8 @@
   "name": "provo-housing-hub-server",
   "version": "1.0.0",
   "engines": {
-      "node": "5.0.0"
+      "node": "5.0.0",
+      "npm": "3.3.5"
   },
   "description": "",
   "main": "index.js",
