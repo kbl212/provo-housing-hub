@@ -14,9 +14,12 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.2.22",
+    "body-parser": "^1.14.2",
+    "cors": "^2.7.1",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "keys": "^0.1.2",
+    "mongoose": "^4.3.3",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0"
   }
