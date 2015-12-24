@@ -5,6 +5,7 @@
     "node": "5.0.0",
     "npm": "3.3.5"
   },
+  "start": "node index.js",
   "description": "",
   "main": "index.js",
   "scripts": {
