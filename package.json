@@ -5,9 +5,9 @@
     "node": "5.0.0",
     "npm": "3.3.5"
   },
-  "start": "node index.js",
+  "start": "node server/index.js",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
