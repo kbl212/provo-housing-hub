@@ -13,7 +13,9 @@ angular.module('provo-housing-hub')
       imageExtension: imageExtension,
      // userEmail: 'test_mail@test.com'
     }
-
+    
+    //console.log("this is what we want...:", newImage);
+    //console.log('shouldnt be seeing this...');
     return $http.post('/api/newimage', newImage)
   }
 

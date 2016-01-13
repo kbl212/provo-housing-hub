@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
-//var keys = require('./keys');
+var keys = require('./keys');
 var session = require('express-session');
 var User = require('./models/User');
 
@@ -43,9 +43,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capitalize every word
-    clientID: process.env.faceClientID,//keys.facebookAuth.clientID,           
-    clientSecret: process.env.faceClientSecret,//keys.facebookAuth.clientSecret,
-    callbackURL: process.env.faceCallbackURL//keys.facebookAuth.callbackURL
+    clientID: /*process.env.faceClientID,*/keys.facebookAuth.clientID,           
+    clientSecret: /*process.env.faceClientSecret,*/ keys.facebookAuth.clientSecret,
+    callbackURL: /*process.env.faceCallbackURL*/ keys.facebookAuth.callbackURL
 }, function(accessToken, refreshToken, profile, done) {
     process.nextTick(function() {
         User.findOne({'faceId' : profile.id}, function(err, user){
