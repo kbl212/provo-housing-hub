@@ -92,6 +92,12 @@ body {
     background-color: #343434;
     border-radius: 10px;
     border: 0;
+    
+    /*
+    
+    
+    */
+    
 }
 .continue-btn:hover {
     background-color: #0d0d0d;
@@ -129,6 +135,15 @@ thead {
     width: 150px;
 }
 
+.active-view {
+    background-color: #67676d;
+    border: 0;
+}
+
+.inactive-view {
+    
+}
+
 .test-p {
     background-color: #fff;
     color: #000;
@@ -153,7 +168,6 @@ thead {
 .gallery-pic {
     height: 250px;
     width: 100%;
-    border-radius: 3px;
 }
 
 .gallery-title {
@@ -477,22 +491,6 @@ h3 {
 
 .nav-menu-lines:hover {
     cursor: pointer;
-}
-
-.tog-btn {
-    background: #27e63f;
-    border-radius: 3px;
-    font-weight: bold;
-    border: none;
-}
-
-.active-view {
-    background-color: #67676d;
-    border: 0;
-}
-
-.inactive-view {
-    
 }
 
 

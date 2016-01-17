@@ -53,7 +53,7 @@
 <div class="container gallery-contain" ng-show="galleryView === 'active-view'">
 
     <a ui-sref="currentListing"><div class="gallery-listing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
-        <img class="gallery-pic" src="{{listing.picture}}">
+        <img class="gallery-pic" ng-src="{{listing.picture}}">
         <span class="gallery-price">${{listing.price}}/mo</span>
         <span class="gallery-date">{{listing.datePosted}}</span>
         <p class="gallery-title">{{listing.title}}</p>
@@ -71,7 +71,7 @@
         </thead>
         <tbody>
             <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
-                <td class="thumb-td"><img class="thumb-img" src="{{listing.picture}}"></td>
+                <td class="thumb-td"><img class="thumb-img" ng-src="{{listing.picture}}"></td>
                 <td class="thumb-other-td">{{listing.datePosted}}---{{listing.title}}
         </br>
         </br>

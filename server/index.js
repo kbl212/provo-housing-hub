@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
-var keys = require('./keys');
+//var keys = require('./keys');
 var session = require('express-session');
 var User = require('./models/User');
 
