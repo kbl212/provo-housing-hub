@@ -15,8 +15,7 @@ var exports = module.exports = {};
 exports.saveImage = function (req, res) {
   buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
 
-  // bucketName var below crates a "folder" for each user
-  var bucketName = 'phh-listing-image/'/* + req.body.userEmail*/;
+  var bucketName = 'phh-listing-image/';
   var params = {
       Bucket: bucketName
     , Key: req.body.imageName

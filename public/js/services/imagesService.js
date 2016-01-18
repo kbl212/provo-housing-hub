@@ -10,13 +10,11 @@ angular.module('provo-housing-hub')
     var newImage = {
       imageName: fileName,
       imageBody: imageData,
-      imageExtension: imageExtension,
-     // userEmail: 'test_mail@test.com'
-    }
+      imageExtension: imageExtension
+    };
     
-    //console.log("this is what we want...:", newImage);
-    //console.log('shouldnt be seeing this...');
-    return $http.post('/api/newimage', newImage)
+
+    return $http.post('/api/newimage', newImage);
   }
 
   return service;

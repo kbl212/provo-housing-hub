@@ -27,14 +27,10 @@ var app = express();
 
 var requireAuth = function(req,res,next) {
     if (req.isAuthenticated()) {
-        console.log('AUTHENTICATED USER!');
         return next();
     }
-    console.log("nope...");
     return res.redirect('/auth/facebook');
 };
-
-//express-session, keys, passport, passport-facebook
 
 app.use(session({secret: "31415926535",
                 saveUninitialized: true,
@@ -62,7 +58,6 @@ passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capi
                 newUser.avatar = "http://www.clker.com/cliparts/U/s/X/0/7/h/white-silhouette-hi.png";
                 newUser.contactEmail = "N/A";
                 newUser.contactPhone = "N/A";
-               // console.log("this is newUser: ", newUser);
 
                 newUser.save(function(err){
                     if (err)
@@ -109,17 +104,6 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
 passport.serializeUser(function(user, done) {           //function called to allow to you MODIFY before putting data on the session
     console.log('stuff...', user);
     done(null, user);
-    /*
-        User.find({facebookId: user.profile.id},
-            function(results){
-            
-            if(!results)
-                ...
-            else {
-                done(null, results.id);
-            }
-    */
-
 });
 
 passport.deserializeUser(function(obj, done) {          //after data is pulled from session
@@ -127,7 +111,7 @@ passport.deserializeUser(function(obj, done) {          //after data is pulled f
 });
 
 
-app.get('/me', requireAuth/*used as middleware here*/, function(req,res) {
+app.get('/me', requireAuth, function(req,res) {
     
     var currentLoggedInUserOnSession = req.user;
     
@@ -148,7 +132,7 @@ app.listen(port, function() {
 
 
 //----------------mongoDB on port 27017
-var mongoUri = process.env.MONGOLAB_URI; //|| "mongodb://localhost:27017/provo-housing-hub";
+var mongoUri = process.env.MONGOLAB_URI || "mongodb://localhost:27017/provo-housing-hub";
 mongoose.connect(mongoUri, function(err) {
     if (err) throw err;
 });
