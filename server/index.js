@@ -149,7 +149,7 @@ app.listen(port, function() {
 
 //----------------mongoDB on port 27017
 var mongoUri = process.env.MONGOLAB_URI; // || "mongodb://localhost:27017/provo-housing-hub";
-mongoose.connect(process.env.MONGOLAB_URI; // || "mongodb://localhost:27017/provo-housing-hub", function(err) {
+mongoose.connect(process.env.MONGOLAB_URI, function(err) {
     if (err) throw err;
 });
 
