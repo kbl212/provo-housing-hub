@@ -43,9 +43,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capitalize every word
-    clientID: /*process.env.faceClientID,*/keys.facebookAuth.clientID,           
-    clientSecret: /*process.env.faceClientSecret,*/ keys.facebookAuth.clientSecret,
-    callbackURL: /*process.env.faceCallbackURL*/ keys.facebookAuth.callbackURL
+    clientID: process.env.faceClientID,//keys.facebookAuth.clientID,           
+    clientSecret: process.env.faceClientSecret, //keys.facebookAuth.clientSecret,
+    callbackURL: process.env.faceCallbackURL //keys.facebookAuth.callbackURL
 }, function(accessToken, refreshToken, profile, done) {
     process.nextTick(function() {
         User.findOne({'faceId' : profile.id}, function(err, user){
