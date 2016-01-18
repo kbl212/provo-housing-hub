@@ -43,9 +43,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capitalize every word
-    clientID: process.env.faceClientID,//keys.facebookAuth.clientID,           
-    clientSecret: process.env.faceClientSecret, //keys.facebookAuth.clientSecret,
-    callbackURL: process.env.faceCallbackURL //keys.facebookAuth.callbackURL
+    clientID: process.env.faceClientID,          
+    clientSecret: process.env.faceClientSecret,
+    callbackURL: process.env.faceCallbackURL
 }, function(accessToken, refreshToken, profile, done) {
     process.nextTick(function() {
         User.findOne({'faceId' : profile.id}, function(err, user){
@@ -148,7 +148,7 @@ app.listen(port, function() {
 
 
 //----------------mongoDB on port 27017
-var mongoUri = process.env.MONGOLAB_URI || "mongodb://localhost:27017/provo-housing-hub";
+var mongoUri = process.env.MONGOLAB_URI; //|| "mongodb://localhost:27017/provo-housing-hub";
 mongoose.connect(mongoUri, function(err) {
     if (err) throw err;
 });
