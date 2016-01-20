@@ -13,6 +13,7 @@ html {
     display:inline-block;
     color: #fff;
     font-family: 'Lato', sans-serif;
+    font-weight: 400;
     font-size: 18px;
     margin-left: 20px;
     margin-right: 20px;
@@ -25,7 +26,7 @@ html {
     color: red;
 }
 .nav {
-    background-color: #000;
+    background-color: #031634;
     height: 84px;
     line-height: 5;
     text-align: center;
@@ -34,7 +35,7 @@ html {
 body {
     height: 100%;
     width: 100%;
-    background-color: #191919;
+    background-color: #033649;
     font-family: 'Lato', sans-serif;
 }
 
@@ -100,7 +101,7 @@ body {
     
 }
 .continue-btn:hover {
-    background-color: #0d0d0d;
+    background-color: #031634;
 }
 
 .notice {
@@ -112,6 +113,7 @@ body {
     text-align: center;
     width: 700px;
     margin-top: 30px;
+    border-radius: 10px;
 }
 
 form {
@@ -127,21 +129,50 @@ a:hover{
 }
 
 thead {
-    font-weight:bold;
-    background-color: teal;
+    font-weight:400;
+    background-color: /*teal*/#036564;
+    color: #fff;
+}
+
+#first-column {
+    border-left: 0;
+}
+
+#last-column {
+    border-right: 0;
 }
 
 .date-posted {
     width: 150px;
 }
 
+button:focus, input:focus{
+    outline: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
 .active-view {
-    background-color: #67676d;
+    background-color: #031634;
     border: 0;
+    color: #fff;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
 }
 
 .inactive-view {
-    
+    background-color: #E8DDCB;
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+}
+
+.listing-table td{
+    border-bottom: 3px solid #fff;
 }
 
 .test-p {
@@ -158,10 +189,12 @@ thead {
     display:inline-block;
     margin-left: 2%;
     margin-bottom: 20px;
+    transition: all 1s;
 }
 
 .gallery-listing:hover {
     opacity: 0.7;
+    transform: scale(1.05);
 }
 
 
@@ -219,7 +252,7 @@ td {
     width: 700px;
 }
 tbody {
-    background-color: #fff;
+    background-color: #E8DDCB/*#fff*/;
 }
 
 .avatar-img {
@@ -261,7 +294,8 @@ tbody {
 }
 
 .table-hover tbody tr:hover {
-    background-color: antiquewhite;
+    background-color: #033649;
+    color: #fff;
 }
 
 .image-display {
@@ -343,7 +377,9 @@ h3 {
     font-weight: bold;
 }
 
-
+.fa-caret-down, .fa-caret-up {
+    float:right;
+}
 
 
 .quick-facts td {
@@ -360,7 +396,7 @@ h3 {
 }
 
 .td-first {
-    background-color: teal;
+    background-color: #036564;
 }
 
 .td-second {
@@ -431,6 +467,10 @@ h3 {
 .new-listing-contain .help-block {
     color: #000;
     font-style: italic;
+}
+
+.tog-btn {
+
 }
 
 .gallery-contain {

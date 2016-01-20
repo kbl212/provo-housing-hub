@@ -6,9 +6,9 @@
     </form>
     <br/>
     <form>
-        <button class="tog-btn" ng-class="listView" ng-click="listView='active-view'; galleryView='inactive-view'; thumbnailView='inactive-view'">List View</button>
-        <button class="tog-btn"  ng-class="thumbnailView" ng-click="thumbnailView='active-view'; galleryView='inactive-view'; listView='inactive-view'">Thumbnail View</button>
-        <button class="tog-btn"  ng-class="galleryView" ng-click="galleryView='active-view'; listView='inactive-view'; thumbnailView='inactive-view'">Gallery View</button>
+        <button ng-class="listView" ng-click="listView='active-view'; galleryView='inactive-view'; thumbnailView='inactive-view'">List View</button>
+        <button ng-class="thumbnailView" ng-click="thumbnailView='active-view'; galleryView='inactive-view'; listView='inactive-view'">Thumbnail View</button>
+        <button ng-class="galleryView" ng-click="galleryView='active-view'; listView='inactive-view'; thumbnailView='inactive-view'">Gallery View</button>
     </form>
 
 
@@ -27,17 +27,17 @@
     
     <table class="table table-hover listing-table">
         <thead>
-            <td class="thead-sort" ng-click="changeSortType('postNumber')">Date Posted</td>
-            <td class="thead-sort" ng-click="changeSortType('title')">Current Listings</td>
-            <td class="thead-sort" ng-click="changeSortType('beds')">Bedrooms</td>
-            <td class="thead-sort" ng-click="changeSortType('price')">Price ($)/mo</td>
+            <td id="first-column" class="thead-sort" ng-click="changeSortType('postNumber')">Date Posted<i ng-show="sortType === '-postNumber'" class="fa fa-caret-down"><i ng-show="sortType === '+postNumber'" class="fa fa-caret-up"></i></td>
+            <td class="thead-sort" ng-click="changeSortType('title')">Current Listings<i ng-show="sortType === '-title'" class="fa fa-caret-down"></i><i ng-show="sortType === '+title'" class="fa fa-caret-up"></i></td>
+            <td class="thead-sort" ng-click="changeSortType('beds')">Bedrooms<i ng-show="sortType === '-beds'" class="fa fa-caret-down"></i><i ng-show="sortType === '+beds'" class="fa fa-caret-up"></i></td>
+            <td id="last-column" class="thead-sort" ng-click="changeSortType('price')">Price ($)/mo<i ng-show="sortType === '-price'" class="fa fa-caret-down"></i><i ng-show="sortType === '+price'" class="fa fa-caret-up"></i></td>
         </thead>
         <tbody>
             <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings | orderBy: sortType" ng-click="getOneListing(listing.postNumber)">
-                <td class="date-posted">{{listing.datePosted}}</td>
+                <td id="first-column" class="date-posted">{{listing.datePosted}}</td>
                 <td>{{listing.title}}</td>
                 <td>{{listing.beds}}</td>
-                <td>${{listing.price | number:0}}</td>
+                <td id="last-column">${{listing.price | number:0}}</td>
             </tr></a>
         </tbody>
     
@@ -66,13 +66,13 @@
 <div class="container thumb-contain" ng-show="thumbnailView === 'active-view'">
     <table class="table table-hover listing-table">
         <thead>
-            <td>Image</td>
-            <td class="thead-sort curr-listings-thumb">Current Listings</td>
+            <td id="first-column">Image</td>
+            <td id="last-column" class="thead-sort curr-listings-thumb">Current Listings</td>
         </thead>
         <tbody>
             <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
-                <td class="thumb-td"><img class="thumb-img" ng-src="{{listing.picture}}"></td>
-                <td class="thumb-other-td">{{listing.datePosted}}---{{listing.title}}
+                <td id="first-column" class="thumb-td"><img class="thumb-img" ng-src="{{listing.picture}}"></td>
+                <td id="last-column" class="thumb-other-td">{{listing.datePosted}}---{{listing.title}}
         </br>
         </br>
                <span class="price-span">${{listing.price | number:0}}</span> --- {{listing.beds}} br --- ({{listing.address}})
