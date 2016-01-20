@@ -2,8 +2,8 @@ var app = angular.module('provo-housing-hub');
 
 app.controller('homeCtrl', function($scope, homeService, imagesService) {
     
-    $scope.listView = "active-view";
-    $scope.galleryView = "inactive-view";
+    $scope.listView = "inactive-view";
+    $scope.galleryView = "active-view";
     $scope.thumbnailView = "inactive-view";
     $scope.sortType = "-postNumber";
     $scope.ordering = "-";

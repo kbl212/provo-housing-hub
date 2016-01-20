@@ -72,10 +72,10 @@
         <tbody>
             <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
                 <td id="first-column" class="thumb-td"><img class="thumb-img" ng-src="{{listing.picture}}"></td>
-                <td id="last-column" class="thumb-other-td">{{listing.datePosted}}---{{listing.title}}
+                <td id="last-column" class="thumb-other-td"><span id="thumb-top-title">{{listing.title}} - {{listing.datePosted}}</span>
         </br>
         </br>
-               <span class="price-span">${{listing.price | number:0}}</span> --- {{listing.beds}} br --- ({{listing.address}})
+               <span class="price-span">${{listing.price | number:0}}/mo</span> --- {{listing.beds}} beds, {{listing.baths}} baths --- <span id="address-span">({{listing.address}})</span>
                 
             </tr></a>
         </tbody>

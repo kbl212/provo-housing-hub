@@ -194,6 +194,8 @@ a:focus {
 
 .gallery-listing:hover {
     opacity: 0.7;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
     transform: scale(1.05);
 }
 
@@ -218,7 +220,7 @@ a:focus {
     background-color: aliceblue;
     color: red;
     width: 20%;
-    height: 10%;
+    height: 7%;
     text-align: center;
     font-weight: bold;
     border-radius: 10px;
@@ -237,10 +239,15 @@ a:focus {
     background-color: aliceblue;
     color: red;
     width: 15%;
-    height: 10%;
+    height: 7%;
     text-align: center;
     font-weight: bold;
     border-radius: 10px;
+}
+
+#thumb-top-title {
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .empty-user {
@@ -323,6 +330,11 @@ tbody {
     text-align: left;
 }
 
+.checkboxes input {
+    width: 20px;
+    height: 20px;
+}
+
 .sign-in-block {
     max-width: 700px;
     background-color: teal;
@@ -347,7 +359,8 @@ tbody {
 
 #description {
     color: #000;
-    min-width: 650px;
+    min-width: 680px;
+    max-width: 680px;
     min-height: 100px;
 }
 
@@ -464,7 +477,7 @@ h3 {
 }
 
 .new-listing-contain {
-    background-color: teal;
+    background-color: #CDB380;
     max-width: 750px;
 }
 
@@ -481,9 +494,13 @@ h3 {
     text-align: center;
 }
 
+#address-span {
+    font-weight: bold;
+}
+
 .thumb-img {
     height: 125px;
-    width: 150px;
+    width: 175px;
 }
 
 .thumb-td {
@@ -525,6 +542,8 @@ h3 {
 
 .price-span {
     border: solid 1px black;
+    padding: 5px;
+    background-color: #CDB380;
 }
 
 .curr-listings-thumb {
