@@ -189,7 +189,7 @@ a:focus {
     display:inline-block;
     margin-left: 2%;
     margin-bottom: 20px;
-    transition: all 1s;
+    transition: all 0.4s;
 }
 
 .gallery-listing:hover {
@@ -201,12 +201,14 @@ a:focus {
 .gallery-pic {
     height: 250px;
     width: 100%;
+    border-radius: 10px;
 }
 
 .gallery-title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    border-radius: 10px;
 }
 
 .gallery-price {
@@ -219,6 +221,7 @@ a:focus {
     height: 10%;
     text-align: center;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 .gallery-title {
@@ -237,6 +240,7 @@ a:focus {
     height: 10%;
     text-align: center;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 .empty-user {
@@ -479,11 +483,15 @@ h3 {
 
 .thumb-img {
     height: 125px;
-    width: 125px;
+    width: 150px;
 }
 
 .thumb-td {
     width: 150px;
+}
+
+.thumb-contain {
+    width: 600px;
 }
 
 .thumb-contain table {
