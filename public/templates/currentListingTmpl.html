@@ -1,74 +1,74 @@
 <div class="custom-container one-listing" ng-controller="homeCtrl" ng-init="getCurrentListing()">
     <div class="listing-display">
-            <img src="../favorites.png" class="star-pic" ng-click="$parent.addToFavorites(currListing._id, $parent.currentUser.faceId, $parent.currentUser)">
-    </br>
+        <img src="../favorites.png" class="star-pic" ng-click="$parent.addToFavorites(currListing._id, $parent.currentUser.faceId, $parent.currentUser)">
+        </br>
         <h3><span class="price-span">${{currListing.price}}</span> / {{currListing.beds}}br  -- {{currListing.title}} <span class="address-span">({{currListing.address}})</span></h3>
-    </br>
-        <div> <img class="one-listing-pic" src="{{currListing.picture}}"/> </div>
-    </br>
-    <p class="description-par">
-        {{currListing.description}}
-    </p>
+        </br>
+        <div> <img class="one-listing-pic" src="{{currListing.picture}}" /> </div>
+        </br>
+        <p class="description-par">
+            {{currListing.description}}
+        </p>
 
-</br>
-    <table class="quick-facts">
-        <thead class="quick-facts-head">
-            <span id="quick-facts-span">Quick Facts</span>
-        </thead>
-        <tbody>
-            
-          <tr>
-            <td class="td-first">Monthly:</td>
-            <td class="td-second">${{currListing.price}}</td>
-          </tr>
+        </br>
+        <table class="quick-facts">
+            <thead class="quick-facts-head">
+                <span id="quick-facts-span">Quick Facts</span>
+            </thead>
+            <tbody>
 
-          <tr>
-            <td class="td-first">Beds:</td>
-            <td class="td-second">{{currListing.beds}}</td>
-          </tr>
+                <tr>
+                    <td class="td-first">Monthly:</td>
+                    <td class="td-second">${{currListing.price}}</td>
+                </tr>
 
-          <tr>
-            <td class="td-first">Baths:</td>
-            <td class="td-second">{{currListing.baths}}</td>
-          </tr>
-            
-          <tr>
-            <td class="td-first">Washer/Dryer in unit:</td>
-            <td class="td-second" ng-show="currListing.wd == true">Yes</td>
-            <td class="td-second" ng-show="currListing.wd == false">No</td>
-          </tr>
-            
-          <tr>
-            <td class="td-first">Smoking Allowed:</td>
-            <td class="td-second" ng-show="currListing.smokingAllowed == true">Yes</td>
-            <td class="td-second" ng-show="currListing.smokingAllowed == false">No</td>
-          </tr>
+                <tr>
+                    <td class="td-first">Beds:</td>
+                    <td class="td-second">{{currListing.beds}}</td>
+                </tr>
 
-          <tr>
-            <td class="td-first">Pets Allowed:</td>
-            <td class="td-second" ng-show="currListing.pets == true">Yes</td>
-            <td class="td-second" ng-show="currListing.pets == false">No</td>
-          </tr>
-            
-          <tr>
-            <td class="td-first">BYU approved:</td>
-            <td class="td-second" ng-show="currListing.byuApproved == true">Yes</td>
-            <td class="td-second" ng-show="currListing.byuApproved == false">No</td>
-          </tr>
-            
-          <tr ng-show="currListing.canUsePhone">
-            <td class="td-first">Contact # for more info: </td>
-            <td class="td-second">{{currListing.postedBy.contactPhone}}</td>
-          </tr>
-            
-          <tr ng-show="currListing.canUseEmail">
-            <td class="td-first">Contact email for more info:</td>
-            <td class="td-second">{{currListing.postedBy.contactEmail}}</td>
-          </tr>
+                <tr>
+                    <td class="td-first">Baths:</td>
+                    <td class="td-second">{{currListing.baths}}</td>
+                </tr>
 
-        </tbody>
-    </table>
+                <tr>
+                    <td class="td-first">Washer/Dryer in unit:</td>
+                    <td class="td-second" ng-show="currListing.wd == true">Yes</td>
+                    <td class="td-second" ng-show="currListing.wd == false">No</td>
+                </tr>
+
+                <tr>
+                    <td class="td-first">Smoking Allowed:</td>
+                    <td class="td-second" ng-show="currListing.smokingAllowed == true">Yes</td>
+                    <td class="td-second" ng-show="currListing.smokingAllowed == false">No</td>
+                </tr>
+
+                <tr>
+                    <td class="td-first">Pets Allowed:</td>
+                    <td class="td-second" ng-show="currListing.pets == true">Yes</td>
+                    <td class="td-second" ng-show="currListing.pets == false">No</td>
+                </tr>
+
+                <tr>
+                    <td class="td-first">BYU approved:</td>
+                    <td class="td-second" ng-show="currListing.byuApproved == true">Yes</td>
+                    <td class="td-second" ng-show="currListing.byuApproved == false">No</td>
+                </tr>
+
+                <tr ng-show="currListing.canUsePhone">
+                    <td class="td-first">Contact # for more info: </td>
+                    <td class="td-second">{{currListing.postedBy.contactPhone}}</td>
+                </tr>
+
+                <tr ng-show="currListing.canUseEmail">
+                    <td class="td-first">Contact email for more info:</td>
+                    <td class="td-second">{{currListing.postedBy.contactEmail}}</td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
-</br>
-</br>
+    </br>
+    </br>
 </div>

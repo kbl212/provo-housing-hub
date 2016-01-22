@@ -1,82 +1,89 @@
 <div class="container all-account-info" ng-controller="accountCtrl">
-    
-    <br/>
-    <img src="{{$parent.currentUser.avatar}}" class="avatar-img" align="left">
-    
-    <table class="table account-tbl">
-        <thead>
-            <td>Display Name</td>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="account-info">{{$parent.currentUser.name}} <button class="add-change-btn" ng-click="nameInputShowing = !nameInputShowing">Add/Change Display Name</button>
-                </br>
-                </br>
-            <div class="newInfoInput" ng-show="(nameInputShowing)">
-                <input type="text" ng-model="newName" placeholder="Enter new name here...">
-                <button ng-click="$parent.updateName(newName, $parent.currentUser.faceId, $parent.currentUser); nameInputShowing = !nameInputShowing">Submit</button>
-            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <br/>
-   
-    <br/>
-    <table class="table account-tbl">
-        <thead>
-            <td>Contact Email</td>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="account-info">{{$parent.currentUser.contactEmail}} <button class="add-change-btn" ng-click="emailInputShowing = !emailInputShowing">Add/Change Email</button>
-               </br>
-               </br>
-             <div class="newInfoInput" ng-show="(emailInputShowing)">
-                <input type="text" ng-model="newEmail" placeholder="Enter new email address here...">
-                <button ng-click="$parent.updateEmail(newEmail, $parent.currentUser.faceId, $parent.currentUser); emailInputShowing = !emailInputShowing">Submit</button>
-            </div>               
-                </td>
 
-            </tr>
-        </tbody>
-    </table>
+    <br/>
+    <div class="account-top-info">
+        <img src="{{$parent.currentUser.avatar}}" class="avatar-img" align="left">
+
+        <table class="table account-tbl">
+            <thead>
+                <td>Display Name</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="account-info">{{$parent.currentUser.name}}
+                        <button class="add-change-btn" ng-click="nameInputShowing = !nameInputShowing">Add/Change Display Name</button>
+                        </br>
+                        </br>
+                        <div class="newInfoInput" ng-show="(nameInputShowing)">
+                            <input type="text" ng-model="newName" placeholder="Enter new name here...">
+                            <button ng-click="$parent.updateName(newName, $parent.currentUser.faceId, $parent.currentUser); nameInputShowing = !nameInputShowing">Submit</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+
+        <br/>
+        <table class="table account-tbl">
+            <thead>
+                <td>Contact Email</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="account-info">{{$parent.currentUser.contactEmail}}
+                        <button class="add-change-btn" ng-click="emailInputShowing = !emailInputShowing">Add/Change Email</button>
+                        </br>
+                        </br>
+                        <div class="newInfoInput" ng-show="(emailInputShowing)">
+                            <input type="text" ng-model="newEmail" placeholder="Enter new email address here...">
+                            <button ng-click="$parent.updateEmail(newEmail, $parent.currentUser.faceId, $parent.currentUser); emailInputShowing = !emailInputShowing">Submit</button>
+                        </div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+        <table class="table account-info account-tbl">
+            <thead>
+                <td>Contact #</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="account-info">{{$parent.currentUser.contactPhone}}
+                        <button class="add-change-btn" ng-click="phoneInputShowing = !phoneInputShowing">Add/Change Contact #</button>
+                        </br>
+                        </br>
+                        <div class="newInfoInput" ng-show="(phoneInputShowing)">
+                            <input type="text" ng-model="newPhone" placeholder="Enter new phone number here...">
+                            <button ng-click="$parent.updatePhone(newPhone, $parent.currentUser.faceId, $parent.currentUser); phoneInputShowing = !phoneInputShowing">Submit</button>
+                        </div>
+                    </td>
+                    <!-- <td>{{account.users[0].contactEmail}}</td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <br/>
     <br/>
     <br/>
-    <table class="table account-info account-tbl">
-        <thead>
-            <td>Contact #</td>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="account-info">{{$parent.currentUser.contactPhone}} <button class="add-change-btn" ng-click="phoneInputShowing = !phoneInputShowing">Add/Change Contact #</button>
-               </br>
-               </br>
-             <div class="newInfoInput" ng-show="(phoneInputShowing)">
-                <input type="text" ng-model="newPhone" placeholder="Enter new phone number here...">
-                <button ng-click="$parent.updatePhone(newPhone, $parent.currentUser.faceId, $parent.currentUser); phoneInputShowing = !phoneInputShowing">Submit</button>
-            </div>               
-                </td>
-               <!-- <td>{{account.users[0].contactEmail}}</td> -->
-            </tr>
-        </tbody>
-    </table>
     <br/>
-    <br/>
-    <br/>
-    <br/>
-    <table class="table account-tbl">
-        <thead>
-            <td>Img</td>
-            <td>My Favorite Listings</td>
-        </thead>
-        <tbody>
-            <tr ui-sref="currentListing" ng-repeat="listing in $parent.currentUser.listings">
-                <td class="thumb-td"><img class="tiny-thumb-img" src="{{listing.picture}}"></td>
-                <td class="account-info">
-                    {{listing.title}}
-                </td>
-           </tr>
-        </tbody>
-    </table>
+    <div class="account-bottom-info">
+        <table class="table account-tbl">
+            <thead>
+                <td>Img</td>
+                <td>My Favorite Listings</td>
+            </thead>
+            <tbody>
+                <tr ui-sref="currentListing" ng-repeat="listing in $parent.currentUser.listings">
+                    <td class="thumb-td"><img class="tiny-thumb-img" src="{{listing.picture}}"></td>
+                    <td class="account-info">
+                        {{listing.title}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
 </div>

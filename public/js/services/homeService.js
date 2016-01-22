@@ -1,49 +1,48 @@
 var app = angular.module('provo-housing-hub');
 
 
-app.service('homeService', function($http) {
+app.service('homeService', function ($http) {
     var currListing = {};
-    this.getListings = function(postNumberIn) {
+    this.getListings = function (postNumberIn) {
         if (postNumberIn === undefined) {
-            return $http.get('/api/listings').then(function(response) {
-        //                    console.log(response.data);
+            return $http.get('/api/listings').then(function (response) {
+                //                    console.log(response.data);
 
                 return response.data;
-            
+
             });
-        }
-        else {
-            return $http.get('/api/listings?postNumber=' + postNumberIn).then(function(response) {
+        } else {
+            return $http.get('/api/listings?postNumber=' + postNumberIn).then(function (response) {
                 currListing = response.data[0];
                 return response.data[0];
             });
         }
-        
+
     }
-    
-    this.getCurrListing = function() {
+
+    this.getCurrListing = function () {
         return currListing;
     }
-    
- /*   this.getOneListing = function(postNumber) {
+
+    /*   this.getOneListing = function(postNumber) {
         return $http.get('/api/listings?postNumber=' + postNumber).then(function(response) {
             console.log(response.data);
             return response.data;
         });
     }
 */
-    
-    this.getCurrDate = function(dateIn) {
+
+    this.getCurrDate = function (dateIn) {
         var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         var postDate = dateIn.split('-');
-     //   console.log(postDate);
+        //   console.log(postDate);
         var month = postDate[1];
-        var day = postDate[2].slice(0,2);
-        var returnDate = months[month-1] + ' ' + day;
+        var day = postDate[2].slice(0, 2);
+        var returnDate = months[month - 1] + ' ' + day;
         return returnDate;
     };
-    
-        this.NewListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, postNumberIn, currUserIn){
+
+    this.NewListing = function (titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn, postNumberIn, currUserIn) {
         if (petsIn === undefined)
             petsIn = false;
         if (emailIn === undefined)
@@ -70,34 +69,34 @@ app.service('homeService', function($http) {
             bedsIn = 0;
         if (bathsIn === undefined)
             bathsIn = 0;
-        
-        console.log ("what is currUserIn ID?: ", currUserIn);
+
+        console.log("what is currUserIn ID?: ", currUserIn);
         //make sure this all matches the backend SCHEMA, and that all required info is here, before actually make a NewListing
         var newListingObj = {
-        title: titleIn,
-        description: descIn,
-        address: addressIn,
-        price: priceIn,
-        beds: bedsIn,
-        baths: bathsIn,
-        sqFootage: sqFootageIn,
-        picture: imageIn,
-        pets: petsIn,
-        canUseEmail: emailIn,
-        canUsePhone: phoneIn,
-        wd: wdIn,
-        smokingAllowed: noSmokeIn,
-        byuApproved: byuIn,
-        parking: parkingIn,
-        furnished: furnishedIn,
-       // datePosted: this.getCurrDate(),
-        postNumber: postNumberIn,
-        postedBy: currUserIn
+            title: titleIn,
+            description: descIn,
+            address: addressIn,
+            price: priceIn,
+            beds: bedsIn,
+            baths: bathsIn,
+            sqFootage: sqFootageIn,
+            picture: imageIn,
+            pets: petsIn,
+            canUseEmail: emailIn,
+            canUsePhone: phoneIn,
+            wd: wdIn,
+            smokingAllowed: noSmokeIn,
+            byuApproved: byuIn,
+            parking: parkingIn,
+            furnished: furnishedIn,
+            // datePosted: this.getCurrDate(),
+            postNumber: postNumberIn,
+            postedBy: currUserIn
         }
-        return $http.post('/api/listings', newListingObj).then(function(response) {
+        return $http.post('/api/listings', newListingObj).then(function (response) {
             return response.data;
         });
     };
-        
-    
+
+
 });

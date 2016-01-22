@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US" ng-app="provo-housing-hub">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,24 +18,24 @@
 </head>
 
 <body ng-controller="masterCtrl">
-    
-        <div class="nav nav-top">
-          <div class="container">
+
+    <div class="nav nav-top">
+        <div class="container">
             <ul class="main-nav-content">
-              <li><a ui-sref="intro"><!--<img class="logo" src="PHHlogo.png">-->Home</a></li>
-              <li><a ui-sref="home">All Listings</a></li>
-              <li><a ui-sref="newlisting">Post New</a></li>
-            <!--  <li><a ui-sref="account">My Account</a></li>  -->
-              <li><a ui-sref="signin" ng-hide="signedIn">Sign in</a></li>
-              <li id="signed-in-nav-li"><a ui-sref="account" ng-show="signedIn" >{{displayName}}</a></li>
-          <!--      <span class="glyphicon glyphicon-align-justify nav-menu-lines" aria-hidden="true"></span> -->
+                <li><a ui-sref="intro"><!--<img class="logo" src="PHHlogo.png">-->Home</a></li>
+                <li><a ui-sref="home">All Listings</a></li>
+                <li><a ui-sref="newlisting">Post New</a></li>
+                <!--  <li><a ui-sref="account">My Account</a></li>  -->
+                <li><a ui-sref="signin" ng-hide="signedIn">Sign in</a></li>
+                <li id="signed-in-nav-li"><a ui-sref="account" ng-show="signedIn">{{displayName}}</a></li>
+                <!--      <span class="glyphicon glyphicon-align-justify nav-menu-lines" aria-hidden="true"></span> -->
 
             </ul>
-          </div>
         </div>
-<div ui-view></div>
-    
-    
+    </div>
+    <div ui-view></div>
+
+
 
     <!--AngularJS-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.js"></script>
@@ -54,4 +55,5 @@
     <script src="js/services/masterService.js"></script>
     <script src="js/services/imagesService.js"></script>
 </body>
+
 </html>

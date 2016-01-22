@@ -1,10 +1,10 @@
 var app = angular.module('provo-housing-hub');
 
 
-app.service('newListingService', function($http) {
-    
-    this.NewListing = function(titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn) {
-        
+app.service('newListingService', function ($http) {
+
+    this.NewListing = function (titleIn, descIn, addressIn, priceIn, bedsIn, bathsIn, sqFootageIn, imageIn, petsIn, emailIn, phoneIn, wdIn, noSmokeIn, byuIn, parkingIn, furnishedIn) {
+
         if (petsIn === undefined)
             petsIn = false;
         if (emailIn === undefined)
@@ -21,12 +21,12 @@ app.service('newListingService', function($http) {
             parkingIn = false;
         if (furnishedIn === undefined)
             furnishedIn = false;
-        
+
         //make sure this all matches the backend SCHEMA, and that all required info is here, before actually make a NewListing
-        
-        
+
+
         console.log("this is imageIn : ", imageIn);
-        
+
         this.title = titleIn;
         this.address = addressIn;
         this.price = priceIn;
@@ -44,7 +44,7 @@ app.service('newListingService', function($http) {
         this.furnished = furnishedIn;
         return this;
     }
-    
-    
-    
+
+
+
 });

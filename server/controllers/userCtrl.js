@@ -1,95 +1,125 @@
 var User = require('../models/User');
 
 module.exports = {
-    
-    getUserAccount: function(req,res,next) {
+
+    getUserAccount: function (req, res, next) {
         console.log("wait...what?");
 
         if (req.query.faceId) {
-            User.find({ faceId: req.query.faceId }).populate('listings').exec(function(err,result) {
+            User.find({
+                faceId: req.query.faceId
+            }).populate('listings').exec(function (err, result) {
                 if (err) res.status(500).send(err);
                 else res.send(result);
             });
-        }
-        else {
+        } else {
             console.log("wait...what?");
-            User.find().exec(function(err, result) {
-            
+            User.find().exec(function (err, result) {
+
                 if (err) return res.status(500).send(err);
                 else res.send(result);
             });
         }
     },
-    
-    createNewAccount: function(req,res,next) {
-        
-        var newAccount = new User (req.body);
-        newAccount.save(function(err, result) {
+
+    createNewAccount: function (req, res, next) {
+
+        var newAccount = new User(req.body);
+        newAccount.save(function (err, result) {
             if (err) return res.status(500).send(err);
             else res.send(result);
         });
     },
-    
-    updateAccount: function(req,res,next) {
-        
+
+    updateAccount: function (req, res, next) {
+
         if (req.body.newName) {
             var updatedUser = new User();
-            var query = {faceId : req.body.faceId};
-            User.findOneAndUpdate(query, {name: req.body.newName}, {upsert:true, new:true}, function(err, doc){
-                if (err) return res.send(500, { error: err });
-                else { 
+            var query = {
+                faceId: req.body.faceId
+            };
+            User.findOneAndUpdate(query, {
+                name: req.body.newName
+            }, {
+                upsert: true,
+                new: true
+            }, function (err, doc) {
+                if (err) return res.send(500, {
+                    error: err
+                });
+                else {
                     return res.send(doc);
                 }
             });
-        }
-        
-        else if (req.body.newEmail) {
+        } else if (req.body.newEmail) {
             console.log("****THIS IS NEW EMAIL****", req.body.newEmail);
             var updatedUser = new User();
-            var query = {faceId : req.body.faceId};
-            User.findOneAndUpdate(query, {contactEmail: req.body.newEmail}, {upsert:true, new:true}, function(err, doc){
-                if (err) return res.send(500, { error: err });
-                else { 
+            var query = {
+                faceId: req.body.faceId
+            };
+            User.findOneAndUpdate(query, {
+                contactEmail: req.body.newEmail
+            }, {
+                upsert: true,
+                new: true
+            }, function (err, doc) {
+                if (err) return res.send(500, {
+                    error: err
+                });
+                else {
                     return res.send(doc);
                 }
             });
-        }
-        
-        else if (req.body.newPhone) {
+        } else if (req.body.newPhone) {
             console.log("****THIS IS NEW PHONE****", req.body.newPhone);
             var updatedUser = new User();
-            var query = {faceId : req.body.faceId};
-            User.findOneAndUpdate(query, {contactPhone: req.body.newPhone}, {upsert:true, new:true}, function(err, doc){
-                if (err) return res.send(500, { error: err });
-                else { 
+            var query = {
+                faceId: req.body.faceId
+            };
+            User.findOneAndUpdate(query, {
+                contactPhone: req.body.newPhone
+            }, {
+                upsert: true,
+                new: true
+            }, function (err, doc) {
+                if (err) return res.send(500, {
+                    error: err
+                });
+                else {
                     return res.send(doc);
                 }
             });
-        }
-        
-        else if (req.body.mongoId) {
+        } else if (req.body.mongoId) {
             console.log("****ADDING TO FAVORITES****", req.body.mongoId);
 
             var updatedUser = new User();
             var newId = req.body.mongoId;
             console.log(newId);
-            var query = {faceId: req.body.faceId};
-            User.findOneAndUpdate(query, {$push: {listings: newId}}, {upsert:true, new:true}, function(err, doc){
+            var query = {
+                faceId: req.body.faceId
+            };
+            User.findOneAndUpdate(query, {
+                $push: {
+                    listings: newId
+                }
+            }, {
+                upsert: true,
+                new: true
+            }, function (err, doc) {
                 if (err) return res.status(500).send(err);
-                else
-                {
+                else {
                     console.log("we got it");
                     return res.send(doc);
                 }
             });
         }
-        
+
     }
 };
-        
-        
-        
-     /*   
+
+
+
+/*   
         User.findOne({ faceId: req.body.faceId }).exec(function(err,result) {
             if (err) res.status(500).send(err);
             else {

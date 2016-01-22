@@ -1,89 +1,93 @@
 <div class="main-body" ng-controller="homeCtrl">
-  <div class="container">
-    <form>
-        <p class="help-block notice">*NOTE* Most recent listings may not appear until page is refreshed.</p>
-        <input class="search-bar" placeholder="Search all listings..." ng-model="searchListings" >
-    </form>
-    <br/>
-    <form>
-        <button ng-class="listView" ng-click="listView='active-view'; galleryView='inactive-view'; thumbnailView='inactive-view'">List View</button>
-        <button ng-class="thumbnailView" ng-click="thumbnailView='active-view'; galleryView='inactive-view'; listView='inactive-view'">Thumbnail View</button>
-        <button ng-class="galleryView" ng-click="galleryView='active-view'; listView='inactive-view'; thumbnailView='inactive-view'">Gallery View</button>
-    </form>
+    <div class="container">
+        <form>
+            <p class="help-block notice">*NOTE* Most recent listings may not appear until page is refreshed.</p>
+            <input class="search-bar" placeholder="Search all listings..." ng-model="searchListings">
+        </form>
+        <br/>
+        <form>
+            <button ng-class="listView" ng-click="listView='active-view'; galleryView='inactive-view'; thumbnailView='inactive-view'">List View</button>
+            <button ng-class="thumbnailView" ng-click="thumbnailView='active-view'; galleryView='inactive-view'; listView='inactive-view'">Thumbnail View</button>
+            <button ng-class="galleryView" ng-click="galleryView='active-view'; listView='inactive-view'; thumbnailView='inactive-view'">Gallery View</button>
+        </form>
 
 
-</div>
+    </div>
 
-</br>
-</br>
-
-
-
-
-
-<!--   LIST VIEW   -->
-
-  <div class="container" ng-show="listView === 'active-view'">
-    
-    <table class="table table-hover listing-table">
-        <thead>
-            <td id="first-column" class="thead-sort" ng-click="changeSortType('postNumber')">Date Posted<i ng-show="sortType === '-postNumber'" class="fa fa-caret-down"><i ng-show="sortType === '+postNumber'" class="fa fa-caret-up"></i></td>
-            <td class="thead-sort" ng-click="changeSortType('title')">Current Listings<i ng-show="sortType === '-title'" class="fa fa-caret-down"></i><i ng-show="sortType === '+title'" class="fa fa-caret-up"></i></td>
-            <td class="thead-sort" ng-click="changeSortType('beds')">Bedrooms<i ng-show="sortType === '-beds'" class="fa fa-caret-down"></i><i ng-show="sortType === '+beds'" class="fa fa-caret-up"></i></td>
-            <td id="last-column" class="thead-sort" ng-click="changeSortType('price')">Price ($)/mo<i ng-show="sortType === '-price'" class="fa fa-caret-down"></i><i ng-show="sortType === '+price'" class="fa fa-caret-up"></i></td>
-        </thead>
-        <tbody>
-            <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings | orderBy: sortType" ng-click="getOneListing(listing.postNumber)">
-                <td id="first-column" class="date-posted">{{listing.datePosted}}</td>
-                <td>{{listing.title}}</td>
-                <td>{{listing.beds}}</td>
-                <td id="last-column">${{listing.price | number:0}}</td>
-            </tr></a>
-        </tbody>
-    
-    </table>
-
-  </div>
+    </br>
+    </br>
 
 
 
 
 
-<!-- GALLERY VIEW -->
-<div class="container gallery-contain" ng-show="galleryView === 'active-view'">
+    <!--   LIST VIEW   -->
 
-    <a ui-sref="currentListing"><div class="gallery-listing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
-        <img class="gallery-pic" ng-src="{{listing.picture}}">
-        <span class="gallery-price">${{listing.price}}/mo</span>
-        <span class="gallery-date">{{listing.datePosted}}</span>
-        <p class="gallery-title">{{listing.title}}</p>
-  </div></a>
-</div>
+    <div class="container" ng-show="listView === 'active-view'">
 
+        <table class="table table-hover listing-table">
+            <thead>
+                <td id="first-column" class="thead-sort" ng-click="changeSortType('postNumber')">Date Posted<i ng-show="sortType === '-postNumber'" class="fa fa-caret-down"><i ng-show="sortType === '+postNumber'" class="fa fa-caret-up"></i></td>
+                <td class="thead-sort" ng-click="changeSortType('title')">Current Listings<i ng-show="sortType === '-title'" class="fa fa-caret-down"></i><i ng-show="sortType === '+title'" class="fa fa-caret-up"></i></td>
+                <td class="thead-sort" ng-click="changeSortType('beds')">Bedrooms<i ng-show="sortType === '-beds'" class="fa fa-caret-down"></i><i ng-show="sortType === '+beds'" class="fa fa-caret-up"></i></td>
+                <td id="last-column" class="thead-sort" ng-click="changeSortType('price')">Price ($)/mo<i ng-show="sortType === '-price'" class="fa fa-caret-down"></i><i ng-show="sortType === '+price'" class="fa fa-caret-up"></i></td>
+            </thead>
+            <tbody>
+                <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings | orderBy: sortType" ng-click="getOneListing(listing.postNumber)">
+                    <td id="first-column" class="date-posted">{{listing.datePosted}}</td>
+                    <td>{{listing.title}}</td>
+                    <td>{{listing.beds}}</td>
+                    <td id="last-column">${{listing.price | number:0}}</td>
+                </tr>
+                </a>
+            </tbody>
 
+        </table>
 
-<!--THUMBNAIL VIEW -->
-<div class="container thumb-contain" ng-show="thumbnailView === 'active-view'">
-    <table class="table table-hover listing-table">
-        <thead>
-            <td id="first-column">Image</td>
-            <td id="last-column" class="thead-sort curr-listings-thumb">Current Listings</td>
-        </thead>
-        <tbody>
-            <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
-                <td id="first-column" class="thumb-td"><img class="thumb-img" ng-src="{{listing.picture}}"></td>
-                <td id="last-column" class="thumb-other-td"><span id="thumb-top-title">{{listing.title}} - {{listing.datePosted}}</span>
-        </br>
-        </br>
-               <span class="price-span">${{listing.price | number:0}}/mo</span> --- {{listing.beds}} beds, {{listing.baths}} baths --- <span id="address-span">({{listing.address}})</span>
-                
-            </tr></a>
-        </tbody>
-    
-    </table>
+    </div>
 
 
-</div>
+
+
+
+    <!-- GALLERY VIEW -->
+    <div class="container gallery-contain" ng-show="galleryView === 'active-view'">
+
+        <a ui-sref="currentListing">
+            <div class="gallery-listing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
+                <img class="gallery-pic" ng-src="{{listing.picture}}">
+                <span class="gallery-price">${{listing.price}}/mo</span>
+                <span class="gallery-date">{{listing.datePosted}}</span>
+                <p class="gallery-title">{{listing.title}}</p>
+            </div>
+        </a>
+    </div>
+
+
+
+    <!--THUMBNAIL VIEW -->
+    <div class="container thumb-contain" ng-show="thumbnailView === 'active-view'">
+        <table class="table table-hover listing-table">
+            <thead>
+                <td id="first-column">Image</td>
+                <td id="last-column" class="thead-sort curr-listings-thumb">Current Listings</td>
+            </thead>
+            <tbody>
+                <tr ui-sref="currentListing" ng-repeat="listing in listings | filter: searchListings | orderBy: '-postNumber'" ng-click="getOneListing(listing.postNumber)">
+                    <td id="first-column" class="thumb-td"><img class="thumb-img" ng-src="{{listing.picture}}"></td>
+                    <td id="last-column" class="thumb-other-td"><span id="thumb-top-title">{{listing.title}} - {{listing.datePosted}}</span>
+                        </br>
+                        </br>
+                        <span class="price-span">${{listing.price | number:0}}/mo</span> --- {{listing.beds}} beds, {{listing.baths}} baths --- <span id="address-span">({{listing.address}})</span>
+
+                </tr>
+                </a>
+            </tbody>
+
+        </table>
+
+
+    </div>
 
 
 

@@ -1,21 +1,21 @@
 angular.module('provo-housing-hub')
 
 .factory('imagesService', function ($http) {
-  var service = {};
+    var service = {};
 
-  service.storeImage = function (imageData, fileName) {
-    var imageExtension = imageData.split(';')[0].split('/');
-    imageExtension = imageExtension[imageExtension.length - 1];
+    service.storeImage = function (imageData, fileName) {
+        var imageExtension = imageData.split(';')[0].split('/');
+        imageExtension = imageExtension[imageExtension.length - 1];
 
-    var newImage = {
-      imageName: fileName,
-      imageBody: imageData,
-      imageExtension: imageExtension
-    };
-    
+        var newImage = {
+            imageName: fileName,
+            imageBody: imageData,
+            imageExtension: imageExtension
+        };
 
-    return $http.post('/api/newimage', newImage);
-  }
 
-  return service;
+        return $http.post('/api/newimage', newImage);
+    }
+
+    return service;
 });

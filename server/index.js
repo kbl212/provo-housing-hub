@@ -25,32 +25,36 @@ var imageCtrl = require('./controllers/imageCtrl');
 //////////////
 var app = express();
 
-var requireAuth = function(req,res,next) {
+var requireAuth = function (req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
     return res.redirect('/auth/facebook');
 };
 
-app.use(session({secret: "31415926535",
-                saveUninitialized: true,
-                resave: true}));
+app.use(session({
+    secret: "31415926535",
+    saveUninitialized: true,
+    resave: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capitalize every word
-    clientID: keys.facebookAuth.clientID,//process.env.faceClientID,          
-    clientSecret: keys.facebookAuth.clientSecret,//process.env.faceClientSecret,
-    callbackURL: keys.facebookAuth.callbackURL//process.env.faceCallbackURL
-}, function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function() {
-        User.findOne({'faceId' : profile.id}, function(err, user){
+passport.use(new FacebookStrategy({ // 'new' keyword, use PaschalCase  ---capitalize every word
+    clientID: keys.facebookAuth.clientID, //process.env.faceClientID,          
+    clientSecret: keys.facebookAuth.clientSecret, //process.env.faceClientSecret,
+    callbackURL: keys.facebookAuth.callbackURL //process.env.faceCallbackURL
+}, function (accessToken, refreshToken, profile, done) {
+    process.nextTick(function () {
+        User.findOne({
+            'faceId': profile.id
+        }, function (err, user) {
             if (err)
                 return done(err);
             if (user)
-                return done(null, user)   //no error, User
-                
-            else {                        //creates new User
+                return done(null, user) //no error, User
+
+            else { //creates new User
                 var newUser = new User();
                 newUser.faceId = profile.id;
                 newUser.token = accessToken;
@@ -59,7 +63,7 @@ passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capi
                 newUser.contactEmail = "N/A";
                 newUser.contactPhone = "N/A";
 
-                newUser.save(function(err){
+                newUser.save(function (err) {
                     if (err)
                         throw err;
                     return done(null, newUser);
@@ -72,8 +76,13 @@ passport.use(new FacebookStrategy ({  // 'new' keyword, use PaschalCase  ---capi
 
 
 
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({
+    limit: '50mb'
+}));
+app.use(bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true
+}));
 app.use(cors());
 app.use(express.static(__dirname + '/../public'));
 
@@ -94,29 +103,29 @@ app.put('/api/account', userCtrl.updateAccount);
 
 app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    
+
     successRedirect: '/',
     failureRedirect: '/account'
-}), function(req,res){
+}), function (req, res) {
     console.log(req.session.user);
 });
 
-passport.serializeUser(function(user, done) {           //function called to allow to you MODIFY before putting data on the session
+passport.serializeUser(function (user, done) { //function called to allow to you MODIFY before putting data on the session
     console.log('stuff...', user);
     done(null, user);
 });
 
-passport.deserializeUser(function(obj, done) {          //after data is pulled from session
+passport.deserializeUser(function (obj, done) { //after data is pulled from session
     done(null, obj);
 });
 
 
-app.get('/me', requireAuth, function(req,res) {
-    
+app.get('/me', requireAuth, function (req, res) {
+
     var currentLoggedInUserOnSession = req.user;
-    
+
     res.send(currentLoggedInUserOnSession);
-    
+
 });
 
 ///////////////
@@ -126,17 +135,17 @@ app.get('/me', requireAuth, function(req,res) {
 
 //----------------server on port 3000
 var port = process.env.PORT || 3000;
-app.listen(port, function() {
+app.listen(port, function () {
     console.log('connected to port ', port);
 });
 
 
 //----------------mongoDB on port 27017
 var mongoUri = process.env.MONGOLAB_URI || "mongodb://localhost:27017/provo-housing-hub";
-mongoose.connect(mongoUri, function(err) {
+mongoose.connect(mongoUri, function (err) {
     if (err) throw err;
 });
 
-mongoose.connection.once('open', function() {
+mongoose.connection.once('open', function () {
     console.log('connected to mongoDb at: ', mongoUri);
 });
